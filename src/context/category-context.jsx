@@ -4,8 +4,10 @@ import { mockProducts } from '../mock/produtosMOCK';
 export const CategoryContext = createContext({});
 
 export default function CategoryContextProvider({ children }) {
-  const [category, setCategory] = useState('oculos');
+  const initialCategory = mockProducts[0].categoryName;
+  const [category, setCategory] = useState(initialCategory);
   const [filteredProducts, setFiltedProducts] = useState([]);
+  const categories = [...new Set(mockProducts.map((product) => product.categoryName))];
 
   useEffect(() => {
     const setFilter = (categoryName) => {
@@ -23,6 +25,7 @@ export default function CategoryContextProvider({ children }) {
         filteredProducts,
         category,
         setCategory,
+        categories,
       } }
     >
       {children}
