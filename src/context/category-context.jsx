@@ -12,7 +12,6 @@ export default function CategoryContextProvider({ children }) {
 
   useEffect(() => {
     const setFilter = (categoryName) => {
-      console.log('oi');
       const filtered = mockProducts
         .filter((product) => product.categoryName === categoryName);
       setFiltedProducts(filtered);
