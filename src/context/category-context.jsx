@@ -20,6 +20,18 @@ export default function CategoryContextProvider({ children }) {
     setFilter(category);
   }, [category]);
 
+  const backCategory = () => {
+    const categoryIndex = categories.indexOf(category);
+    if (categoryIndex === 0) return setCategory(categories[categories.length - 1]);
+    setCategory(categories[categoryIndex - 1]);
+  };
+
+  const nextCategory = () => {
+    const categoryIndex = categories.indexOf(category);
+    if (categoryIndex === categories.length - 1) return setCategory(categories[0]);
+    setCategory(categories[categoryIndex + 1]);
+  };
+
   return (
 
     <CategoryContext.Provider
@@ -28,6 +40,8 @@ export default function CategoryContextProvider({ children }) {
         category,
         setCategory,
         categories,
+        backCategory,
+        nextCategory,
       } }
     >
       {children}

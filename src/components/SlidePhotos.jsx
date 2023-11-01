@@ -4,21 +4,9 @@ import { CategoryContext } from '../context/category-context';
 export default function SlidePhotos() {
   const { filteredProducts,
     category,
-    setCategory,
-    categories } = useContext(CategoryContext);
+    backCategory,
+    nextCategory } = useContext(CategoryContext);
   const indexPhoto = useRef(0);
-
-  const backCategory = () => {
-    const categoryIndex = categories.indexOf(category);
-    if (categoryIndex === 0) return setCategory(categories[categories.length - 1]);
-    setCategory(categories[categoryIndex - 1]);
-  };
-
-  const nextCategory = () => {
-    const categoryIndex = categories.indexOf(category);
-    if (categoryIndex === categories.length - 1) return setCategory(categories[0]);
-    setCategory(categories[categoryIndex + 1]);
-  };
 
   const slideToNextPhoto = () => {
     indexPhoto.current += 1;

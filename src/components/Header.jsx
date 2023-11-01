@@ -4,21 +4,12 @@ import arrowRight from '../../public/icons/icon-arrow-back-ios.svg';
 import { CategoryContext } from '../context/category-context';
 
 export default function Header() {
-  const { category, filteredProducts,
-    categories, setCategory } = useContext(CategoryContext);
+  const { category,
+    filteredProducts,
+    backCategory,
+    nextCategory } = useContext(CategoryContext);
   const quantity = filteredProducts.length;
 
-  const backCategory = () => {
-    const categoryIndex = categories.indexOf(category);
-    if (categoryIndex === 0) return setCategory(categories[categories.length - 1]);
-    setCategory(categories[categoryIndex - 1]);
-  };
-
-  const nextCategory = () => {
-    const categoryIndex = categories.indexOf(category);
-    if (categoryIndex === categories.length - 1) return setCategory(categories[0]);
-    setCategory(categories[categoryIndex + 1]);
-  };
   return (
     <header
       className="flex h-[46px] items-center
