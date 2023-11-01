@@ -8,8 +8,6 @@ export default function Header() {
     categories, setCategory } = useContext(CategoryContext);
   const quantity = filteredProducts.length;
 
-  console.log(category);
-
   const backCategory = () => {
     const categoryIndex = categories.indexOf(category);
     if (categoryIndex === 0) return setCategory(categories[categories.length - 1]);

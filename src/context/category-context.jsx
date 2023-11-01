@@ -7,10 +7,12 @@ export default function CategoryContextProvider({ children }) {
   const initialCategory = mockProducts[0].categoryName;
   const [category, setCategory] = useState(initialCategory);
   const [filteredProducts, setFiltedProducts] = useState([]);
+
   const categories = [...new Set(mockProducts.map((product) => product.categoryName))];
 
   useEffect(() => {
     const setFilter = (categoryName) => {
+      console.log('oi');
       const filtered = mockProducts
         .filter((product) => product.categoryName === categoryName);
       setFiltedProducts(filtered);
