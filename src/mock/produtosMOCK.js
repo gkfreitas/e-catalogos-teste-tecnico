@@ -42,7 +42,7 @@ export const mockProducts = [
     ],
   },
   {
-    id: 1,
+    id: 3,
     reference: '11.10.2023',
     nome: 'óculos',
     price: 34.5,
@@ -63,7 +63,7 @@ export const mockProducts = [
     ],
   },
   {
-    id: 1,
+    id: 4,
     reference: '11.10.2023',
     nome: 'óculos',
     price: 34.5,
@@ -84,7 +84,7 @@ export const mockProducts = [
     ],
   },
   {
-    id: 13,
+    id: 5,
     reference: '12.45.2023',
     nome: 'ocúlos de sol preto',
     price: 50.24,
@@ -105,7 +105,7 @@ export const mockProducts = [
     ],
   },
   {
-    id: 88,
+    id: 6,
     reference: '08.45.2001',
     nome: 'Casaco infantil',
     price: 199.98,
@@ -128,7 +128,7 @@ export const mockProducts = [
     ],
   },
   {
-    id: 16,
+    id: 7,
     reference: '16.10.2020',
     nome: 'Conjunto casaco infantil',
     price: 250.3,
@@ -150,7 +150,7 @@ export const mockProducts = [
     ],
   },
   {
-    id: 16,
+    id: 8,
     reference: '16.10.2020',
     nome: 'Conjunto casaco infantil',
     price: 250.3,

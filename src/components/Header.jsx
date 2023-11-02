@@ -7,10 +7,13 @@ export default function Header() {
   const { category,
     filteredProducts,
     backCategory,
-    nextCategory } = useContext(CategoryContext);
+    nextCategory,
+  } = useContext(CategoryContext);
+
   const quantity = filteredProducts.length;
 
   return (
+
     <header
       className="flex h-[46px] items-center
     bg-[#1CBFD8] px-[20px] rounded-b-[5px] justify-between"
@@ -38,7 +41,7 @@ export default function Header() {
         <img
           role="presentation"
           src={ arrowLeft }
-          onClick={ () => backCategory() }
+          onClick={ backCategory }
           alt="Flecha para esquerda"
           className="w-[30px] h-[30px]"
         />
@@ -58,7 +61,7 @@ export default function Header() {
           src={ arrowRight }
           alt="Flecha para Direitas"
           className="w-[30px] h-[30px]"
-          onClick={ () => nextCategory() }
+          onClick={ nextCategory }
         />
       </div>
     </header>
