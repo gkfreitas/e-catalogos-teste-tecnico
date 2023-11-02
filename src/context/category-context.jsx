@@ -22,7 +22,7 @@ export default function CategoryContextProvider({ children }) {
       setFiltedProducts(filtered);
     };
     setFilter(category);
-  }, [category]);
+  }, [category, indexPhoto.current]);
 
   const findFirstProductOfCategory = (categoryName) => {
     const foundedProduct = mockProducts

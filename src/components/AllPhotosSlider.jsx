@@ -19,7 +19,6 @@ export default function AllPhotosSlide() {
     allPhotosVisible,
   } = useContext(ProductContext);
 
-  console.log(allPhotosVisible);
   const slideToNextPhoto = () => {
     toggleChosedImage(false);
     indexPhoto.current += 1;
