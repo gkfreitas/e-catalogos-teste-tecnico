@@ -10,13 +10,12 @@ import InfoCard from './InfoCard';
 export default function ProductTools() {
   const { actualProduct } = useContext(CategoryContext);
   const { images, nome, description, tecInfo, deliveryTime } = actualProduct;
-  const { toggleInfoCard,
-    productImageUrl,
-    chosedImage,
+  const {
+    toggleInfoCard,
     toggleChosedImage,
-    setProductImageUrl } = useContext(ProductContext);
-
-  console.log(chosedImage, productImageUrl);
+    setProductImageUrl,
+    setAllPhotosVisible,
+    allPhotosVisible } = useContext(ProductContext);
 
   const enableAndShowImage = ({ target }) => {
     toggleChosedImage(true);
@@ -60,9 +59,11 @@ export default function ProductTools() {
         ))}
         <div className="flex">
           <img
+            role="presentation"
             src={ viewIcon }
             alt="Icone de um olho"
             className="cursor-pointer ml-[8px]"
+            onClick={ () => setAllPhotosVisible(!allPhotosVisible) }
           />
           <img
             src={ shopIcon }

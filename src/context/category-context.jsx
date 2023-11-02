@@ -13,7 +13,7 @@ export default function CategoryContextProvider({ children }) {
   const indexPhoto = useRef(0);
   const categories = [...new Set(mockProducts.map((product) => product.categoryName))];
 
-  const { chosedImage, toggleChosedImage } = useContext(ProductContext);
+  const { toggleChosedImage } = useContext(ProductContext);
 
   useEffect(() => {
     const setFilter = (categoryName) => {
