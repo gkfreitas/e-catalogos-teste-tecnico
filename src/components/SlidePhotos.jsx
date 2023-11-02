@@ -1,39 +1,44 @@
-import { useContext, useEffect, useRef } from 'react';
+import { useContext, useEffect } from 'react';
 import arrow from '../../public/icons/right-arrow.svg';
 import { CategoryContext } from '../context/category-context';
+import { mockProducts } from '../mock/produtosMOCK';
 
 export default function SlidePhotos() {
-  const { filteredProducts,
+  const {
     category,
-    backCategory,
-    nextCategory } = useContext(CategoryContext);
-  const indexPhoto = useRef(0);
+    setCategory,
+    setActualProduct,
+    indexPhoto,
+  } = useContext(CategoryContext);
 
   const slideToNextPhoto = () => {
     indexPhoto.current += 1;
-    if (indexPhoto.current === filteredProducts.length) return nextCategory();
+    if (indexPhoto.current === mockProducts.length) {
+      indexPhoto.current = 0;
+    }
     const photoElement = document.getElementById(`photo-${indexPhoto.current}`);
     photoElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    setActualProduct(mockProducts[indexPhoto.current].categoryName);
+    setCategory(mockProducts[indexPhoto.current].categoryName);
   };
 
   const slideToPreviusPhoto = () => {
     indexPhoto.current -= 1;
-    if (indexPhoto.current < 0) return backCategory();
+    if (indexPhoto.current < 0) {
+      indexPhoto.current = mockProducts.length - 1;
+    }
     const photoElement = document.getElementById(`photo-${indexPhoto.current}`);
     photoElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    setActualProduct(mockProducts[indexPhoto.current]);
+    setCategory(mockProducts[indexPhoto.current].categoryName);
   };
 
   useEffect(() => {
     // Ir para a primeira foto
-    console.log(indexPhoto.current);
-    if (filteredProducts.length) {
-      const firstPhoto = document.getElementById('photo-0');
-      firstPhoto.scrollIntoView({ behavior: 'instant' });
-      indexPhoto.current = 0;
-    }
+
   }, [category]);
 
-  const photos = filteredProducts.map((product) => product.images[0]);
+  const photos = mockProducts.map((product) => product.images[0]);
 
   return (
     <main className="w-[390px] h-[490px] ">
@@ -46,6 +51,7 @@ export default function SlidePhotos() {
           } }
         >
           {photos.map((photo, i) => (
+
             <img
               id={ `photo-${i}` }
               className="w-[390px] h-[490px] shrink-0"

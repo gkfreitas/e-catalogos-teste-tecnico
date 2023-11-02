@@ -8,8 +8,8 @@ export default function Header() {
     filteredProducts,
     backCategory,
     nextCategory } = useContext(CategoryContext);
-  const quantity = filteredProducts.length;
 
+  const quantity = filteredProducts.length;
   return (
     <header
       className="flex h-[46px] items-center
