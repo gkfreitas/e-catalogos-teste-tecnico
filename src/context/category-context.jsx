@@ -1,5 +1,6 @@
-import { createContext, useEffect, useRef, useState } from 'react';
+import { createContext, useContext, useEffect, useRef, useState } from 'react';
 import { mockProducts } from '../mock/produtosMOCK';
+import { ProductContext } from './product-context';
 
 export const CategoryContext = createContext({});
 
@@ -9,48 +10,63 @@ export default function CategoryContextProvider({ children }) {
   const [category, setCategory] = useState(initialCategory);
   const [filteredProducts, setFiltedProducts] = useState([]);
   const [actualProduct, setActualProduct] = useState(initialProduct);
-
+  const indexPhoto = useRef(0);
   const categories = [...new Set(mockProducts.map((product) => product.categoryName))];
+
+  const { chosedImage, toggleChosedImage } = useContext(ProductContext);
 
   useEffect(() => {
     const setFilter = (categoryName) => {
       const filtered = mockProducts
         .filter((product) => product.categoryName === categoryName);
       setFiltedProducts(filtered);
-      setActualProduct(filteredProducts[0]);
     };
     setFilter(category);
   }, [category]);
 
-  const indexPhoto = useRef(0);
-  const firstIndexProductOfCategory = useRef(0);
-
-  const findFirstProductOfCategory = mockProducts
-    .find((product) => product.categoryName === category);
-  const indexOfFirstProductOfCategory = mockProducts
-    .indexOf(findFirstProductOfCategory);
-  firstIndexProductOfCategory.current = indexOfFirstProductOfCategory;
+  const findFirstProductOfCategory = (categoryName) => {
+    const foundedProduct = mockProducts
+      .find((product) => product.categoryName === categoryName);
+    const indexOfFirstProductOfCategory = mockProducts
+      .indexOf(foundedProduct);
+    indexPhoto.current = indexOfFirstProductOfCategory;
+  };
 
   const backCategory = () => {
-    console.log('back');
+    toggleChosedImage(false);
     const categoryIndex = categories.indexOf(category);
-    if (categoryIndex === 0) return setCategory(categories[categories.length - 1]);
-    setCategory(categories[categoryIndex - 1]);
+    let newCategory;
+
+    if (categoryIndex === 0) {
+      newCategory = categories[categories.length - 1];
+    } else {
+      newCategory = categories[categoryIndex - 1];
+    }
+
+    setCategory(newCategory);
+    findFirstProductOfCategory(newCategory);
   };
 
   const nextCategory = () => {
-    console.log('next');
+    toggleChosedImage(false);
     const categoryIndex = categories.indexOf(category);
-    if (categoryIndex === categories.length - 1) return setCategory(categories[0]);
-    setCategory(categories[categoryIndex + 1]);
-    console.log(firstIndexProductOfCategory);
+    let newCategory;
+
+    if (categoryIndex === categories.length - 1) {
+      // eslint-disable-next-line prefer-destructuring
+      newCategory = categories[0];
+    } else {
+      newCategory = categories[categoryIndex + 1];
+    }
+
+    setCategory(newCategory);
+    findFirstProductOfCategory(newCategory);
   };
 
   return (
 
     <CategoryContext.Provider
       value={ {
-        firstIndexProductOfCategory,
         indexPhoto,
         filteredProducts,
         category,

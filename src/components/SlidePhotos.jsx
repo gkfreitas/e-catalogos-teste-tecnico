@@ -1,44 +1,52 @@
 import { useContext, useEffect } from 'react';
 import arrow from '../../public/icons/right-arrow.svg';
 import { CategoryContext } from '../context/category-context';
+import { ProductContext } from '../context/product-context';
 import { mockProducts } from '../mock/produtosMOCK';
+import ChosedImage from './ChosedImage';
 
 export default function SlidePhotos() {
   const {
-    category,
     setCategory,
     setActualProduct,
     indexPhoto,
   } = useContext(CategoryContext);
 
+  const { chosedImage, toggleChosedImage } = useContext(ProductContext);
+
   const slideToNextPhoto = () => {
+    toggleChosedImage(false);
     indexPhoto.current += 1;
+
     if (indexPhoto.current === mockProducts.length) {
       indexPhoto.current = 0;
     }
+    setCategory(mockProducts[indexPhoto.current].categoryName);
+    setActualProduct(mockProducts[indexPhoto.current]);
     const photoElement = document.getElementById(`photo-${indexPhoto.current}`);
     photoElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    setActualProduct(mockProducts[indexPhoto.current].categoryName);
-    setCategory(mockProducts[indexPhoto.current].categoryName);
   };
 
   const slideToPreviusPhoto = () => {
+    toggleChosedImage(false);
     indexPhoto.current -= 1;
     if (indexPhoto.current < 0) {
       indexPhoto.current = mockProducts.length - 1;
     }
+    setCategory(mockProducts[indexPhoto.current].categoryName);
+    setActualProduct(mockProducts[indexPhoto.current]);
     const photoElement = document.getElementById(`photo-${indexPhoto.current}`);
     photoElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    setActualProduct(mockProducts[indexPhoto.current]);
-    setCategory(mockProducts[indexPhoto.current].categoryName);
   };
 
-  useEffect(() => {
-    // Ir para a primeira foto
-
-  }, [category]);
-
   const photos = mockProducts.map((product) => product.images[0]);
+
+  useEffect(() => {
+    setCategory(mockProducts[indexPhoto.current].categoryName);
+    setActualProduct(mockProducts[indexPhoto.current]);
+    const photoElement = document.getElementById(`photo-${indexPhoto.current}`);
+    photoElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, [indexPhoto.current]);
 
   return (
     <main className="w-[390px] h-[490px] ">
@@ -50,7 +58,7 @@ export default function SlidePhotos() {
             borderRadius: '0px 0px 10px 10px',
           } }
         >
-          {photos.map((photo, i) => (
+          {chosedImage ? <ChosedImage /> : photos.map((photo, i) => (
 
             <img
               id={ `photo-${i}` }
