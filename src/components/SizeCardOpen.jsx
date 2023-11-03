@@ -3,15 +3,33 @@ import { ProductContext } from '../context/product-context';
 
 export default function SizeCardOpen(props) {
   const { size, stock } = props;
+
   const {
     currentSize,
     setCurrentSize,
+    currentSizeSave,
+    setCurrentSizeSave,
+    currentProduct,
   } = useContext(ProductContext);
 
+  const { id } = currentProduct;
+
   const verifyUnic = size === 'unico';
+
+  const stockToReduce = currentSizeSave[id] ? currentSizeSave[id][size] : 0;
+
   useEffect(() => {
-    console.log(props);
-  });
+    if (!currentSizeSave[id]) {
+      setCurrentSizeSave((prevState) => ({
+        ...prevState,
+        [id]: {
+          ...prevState[id],
+          [size]: 0,
+        },
+      }));
+    }
+  }, []);
+
   return (
     <div className="mr-[20px]">
       {verifyUnic && <div>UNICO</div>}
@@ -35,7 +53,8 @@ export default function SizeCardOpen(props) {
               fontWeight: '500',
             } }
           >
-            {0}
+            {console.log(currentSizeSave[id])}
+            {currentSizeSave[id] ? currentSizeSave[id][size] : 0 }
           </h1>
           {verifyUnic ? '' : (
             <>
@@ -91,7 +110,7 @@ export default function SizeCardOpen(props) {
                     fill="#000"
                     fontSize={ 12 }
                   >
-                    {stock}
+                    {stock - stockToReduce }
                   </text>
                 </svg>
               </div>

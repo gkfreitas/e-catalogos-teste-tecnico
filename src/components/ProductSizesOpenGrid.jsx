@@ -1,16 +1,19 @@
 import { useContext } from 'react';
-import { CategoryContext } from '../context/category-context';
+import { ProductContext } from '../context/product-context';
 import SizeCardOpen from './SizeCardOpen';
 
 export default function ProductSizesOpenGrid() {
-  const { actualProduct } = useContext(CategoryContext);
-  const { sizes } = actualProduct;
+  const { currentProduct, isOpenGrid } = useContext(ProductContext);
+  const { sizes } = currentProduct;
 
   const sizesName = Object.keys(sizes);
   const sizesValues = Object.values(sizes);
 
+  console.log(isOpenGrid);
+
   return (
-    <div className="flex mx-[20px] justify-center items-end mt-[12px]">
+    <div className="flex mx-[20px] justify-center items-end mt-[28px]">
+
       {sizesValues.map((size, i) => (
         <SizeCardOpen
           quantity={ size.quantity }

@@ -9,8 +9,6 @@ import RenderAllPhotos from './RenderAllPhotos';
 export default function AllPhotosSlide() {
   const {
     setCategory,
-    setActualProduct,
-    actualProduct,
     indexPhoto,
   } = useContext(CategoryContext);
 
@@ -19,6 +17,8 @@ export default function AllPhotosSlide() {
     chosedImage,
     allPhotosVisible,
     setOpenGrid,
+    currentProduct,
+    setCurrentProduct,
   } = useContext(ProductContext);
 
   const slideToNextPhoto = () => {
@@ -29,7 +29,7 @@ export default function AllPhotosSlide() {
       indexPhoto.current = 0;
     }
     setCategory(mockProducts[indexPhoto.current].categoryName);
-    setActualProduct(mockProducts[indexPhoto.current]);
+    setCurrentProduct(mockProducts[indexPhoto.current]);
     const photoElement = document.getElementById(`photo-${indexPhoto.current}`);
     if (photoElement) {
       photoElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -43,7 +43,7 @@ export default function AllPhotosSlide() {
       indexPhoto.current = mockProducts.length - 1;
     }
     setCategory(mockProducts[indexPhoto.current].categoryName);
-    setActualProduct(mockProducts[indexPhoto.current]);
+    setCurrentProduct(mockProducts[indexPhoto.current]);
     const photoElement = document.getElementById(`photo-${indexPhoto.current}`);
     if (photoElement) {
       photoElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -52,8 +52,8 @@ export default function AllPhotosSlide() {
 
   useEffect(() => {
     setCategory(mockProducts[indexPhoto.current].categoryName);
-    setActualProduct(mockProducts[indexPhoto.current]);
-    setOpenGrid(actualProduct.openGrid);
+    setCurrentProduct(mockProducts[indexPhoto.current]);
+    setOpenGrid(currentProduct.openGrid);
     const photoElement = document.getElementById(`photo-${indexPhoto.current}`);
     if (photoElement) {
       photoElement.scrollIntoView({ behavior: 'smooth', block: 'center' });

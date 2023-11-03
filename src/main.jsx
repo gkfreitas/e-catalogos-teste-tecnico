@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import CategoryContextProvider from './context/category-context';
 import ProductContextProvider from './context/product-context';

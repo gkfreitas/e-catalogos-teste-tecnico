@@ -3,19 +3,20 @@ import infoIcon from '../../public/icons/info.svg';
 import searchIcon from '../../public/icons/search-icon.svg';
 import shopIcon from '../../public/icons/shop-icon.svg';
 import viewIcon from '../../public/icons/view-icon.svg';
-import { CategoryContext } from '../context/category-context';
 import { ProductContext } from '../context/product-context';
 import InfoCard from './InfoCard';
 
 export default function ProductTools() {
-  const { actualProduct } = useContext(CategoryContext);
-  const { images, nome, description, tecInfo, deliveryTime } = actualProduct;
   const {
+    currentProduct,
     toggleInfoCard,
     toggleChosedImage,
     setProductImageUrl,
     setAllPhotosVisible,
-    allPhotosVisible } = useContext(ProductContext);
+    allPhotosVisible,
+  } = useContext(ProductContext);
+
+  const { images, nome, description, tecInfo, deliveryTime } = currentProduct;
 
   const enableAndShowImage = ({ target }) => {
     toggleChosedImage(true);

@@ -6,10 +6,10 @@ export const CategoryContext = createContext({});
 
 export default function CategoryContextProvider({ children }) {
   const initialCategory = mockProducts[0].categoryName;
-  const initialProduct = mockProducts[0];
+
   const [category, setCategory] = useState(initialCategory);
   const [filteredProducts, setFiltedProducts] = useState([]);
-  const [actualProduct, setActualProduct] = useState(initialProduct);
+
   const indexPhoto = useRef(0);
   const categories = [...new Set(mockProducts.map((product) => product.categoryName))];
 
@@ -58,7 +58,6 @@ export default function CategoryContextProvider({ children }) {
     } else {
       newCategory = categories[categoryIndex + 1];
     }
-
     setCategory(newCategory);
     findFirstProductOfCategory(newCategory);
   };
@@ -74,8 +73,6 @@ export default function CategoryContextProvider({ children }) {
         categories,
         backCategory,
         nextCategory,
-        actualProduct,
-        setActualProduct,
       } }
     >
       {children}

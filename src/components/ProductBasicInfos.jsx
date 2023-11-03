@@ -1,9 +1,9 @@
 import { useContext } from 'react';
-import { CategoryContext } from '../context/category-context';
+import { ProductContext } from '../context/product-context';
 
 export default function ProductBasicInfos() {
-  const { actualProduct } = useContext(CategoryContext);
-  const { reference, price, nome: name } = actualProduct;
+  const { currentProduct } = useContext(ProductContext);
+  const { reference, price, nome: name } = currentProduct;
 
   function capitalizeFirstLetterOfEachSentence(inputString) {
     const sentences = inputString.split(' ');

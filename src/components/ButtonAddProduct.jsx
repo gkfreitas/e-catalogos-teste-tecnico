@@ -2,13 +2,13 @@ import minusIcon from '../../public/icons/minus-symbol.svg';
 import plusIcon from '../../public/icons/plus-symbol.svg';
 
 export default function ButtonAddProduct(props) {
-  const { addProduct } = props;
+  const { addProduct, removeProduct } = props;
   return (
     <div
       className="flex justify-between bg-[#12A1B8] rounded-[8px]
     px-[8px] py-[4px] items-center"
     >
-      <button>
+      <button onClick={ removeProduct }>
         <img src={ minusIcon } alt="Icone de menos" />
       </button>
       <h1

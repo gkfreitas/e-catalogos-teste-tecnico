@@ -35,7 +35,7 @@ export default function InfoCard(props) {
             <img
               src={ closeIcon }
               alt="Icone para fechar informações"
-
+              className={ `${visibleInfoCard ? 'block' : 'hidden'}` }
             />
           </button>
         </header>

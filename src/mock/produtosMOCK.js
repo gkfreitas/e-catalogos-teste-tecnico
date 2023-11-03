@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 export const mockProducts = [
   {
     id: 1,
@@ -19,7 +20,7 @@ export const mockProducts = [
     ],
   },
   {
-    id: 13,
+    id: 2,
     reference: '12.45.2023',
     nome: 'ocúlos de sol preto',
     price: 50.24,
@@ -39,7 +40,7 @@ export const mockProducts = [
     ],
   },
   {
-    id: 88,
+    id: 3,
     reference: '08.45.2001',
     nome: 'Casaco infantil',
     price: 199.98,
@@ -62,7 +63,7 @@ export const mockProducts = [
     ],
   },
   {
-    id: 16,
+    id: 4,
     reference: '16.10.2020',
     nome: 'Conjunto casaco infantil',
     price: 250.3,
@@ -81,6 +82,47 @@ export const mockProducts = [
     openGrid: 1,
     images: [
       { id: 89, url: 'https://paineladm.e-catalogos.net/storage/2110/2110_1573128500sm752p2ku7b4y6xep309x4.png' },
+    ],
+  },
+  {
+    id: 4,
+    reference: '17.10.2020',
+    nome: 'Oculos preto',
+    price: 250.3,
+    description: 'Oculos preto.',
+    tecInfo: '',
+    NCM: 0,
+    deliveryTime: 'pronta entrega',
+    categoryName: 'oculos',
+    categoryId: 3,
+    sizes: {
+      P: { quantity: 2, stock: 40 },
+      M: { quantity: 3, stock: 40 },
+      G: { quantity: 3, stock: 40 },
+      GG: { quantity: 2, stock: 35 },
+    },
+    openGrid: 1,
+    images: [
+      { id: 89, url: 'https://paineladm.e-catalogos.net/storage/2110/2110_1651667483ezf5lxhvf5glbe6iam16vo.png' },
+    ],
+  },
+  {
+    id: 6,
+    reference: '17.10.2020',
+    nome: 'Oculos vermelho',
+    price: 250.3,
+    description: 'Oculos preto.',
+    tecInfo: '',
+    NCM: 0,
+    deliveryTime: 'pronta entrega',
+    categoryName: 'oculos',
+    categoryId: 3,
+    sizes: {
+      unico: { quantity: 2, stock: 40 },
+    },
+    openGrid: 1,
+    images: [
+      { id: 89, url: 'https://paineladm.e-catalogos.net/storage/2110/2110_16516674933c1dnbldyu5mdfmuyacql.png' },
     ],
   },
 ];
