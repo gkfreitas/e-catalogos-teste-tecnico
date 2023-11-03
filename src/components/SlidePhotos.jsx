@@ -6,7 +6,7 @@ import AllPhotosSlide from './AllPhotosSlider';
 export default function SlidePhotos() {
   const { allPhotosVisible } = useContext(ProductContext);
   return (
-    <main className="w-[390px] h-[490px] ">
+    <main className="w-[390px] h-[490px] overflow-hidden ">
       <div>
         {allPhotosVisible ? <AllPhotos /> : <AllPhotosSlide />}
       </div>

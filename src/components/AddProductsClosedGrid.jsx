@@ -1,27 +1,35 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { CategoryContext } from '../context/category-context';
-import { ProductContext } from '../context/product-context';
 import ButtonAddProduct from './ButtonAddProduct';
 
 export default function AddProducts() {
-  const {
-    currentRefQuantity,
-    accumulatedRefQuantity,
-    currentPrice,
-    accumulatedPrice,
-    currentPack,
-    setCurrentRefQuantity } = useContext(ProductContext);
+  const { actualProduct } = useContext(CategoryContext);
+  const { id, price } = actualProduct;
+  const [currentRefSave, setCurrentRefSave] = useState({});
+  const [currentPrice, setCurrentPrice] = useState(0);
 
-  const { indexPhoto } = useContext(CategoryContext);
-
-  const currentPriceNumber = ((currentPrice * currentRefQuantity) * currentPack)
-    .toFixed(2);
+  const addProduct = () => {
+    setCurrentRefSave((prevState) => ({
+      ...prevState,
+      [id]: currentRefSave[id] + 1,
+    }));
+    const total = price * (currentRefSave[id] + 1);
+    setCurrentPrice((total));
+  };
 
   useEffect(() => {
-    setCurrentRefQuantity(0);
-  }, [indexPhoto.current]);
+    setCurrentRefSave((prevState) => ({
+      ...prevState,
+      [id]: currentRefSave[id] || 0,
+    }));
+
+    const total = price * currentRefSave[id] || 0;
+
+    setCurrentPrice(total);
+  }, [id]);
+
   return (
-    <section className="bg-[#1CBFD8] py-[5px]">
+    <section className="bg-[#1CBFD8] py-[5px] absolute w-full bottom-0">
       <div
         className="mx-[20px] flex justify-between items-center
       "
@@ -50,11 +58,13 @@ export default function AddProducts() {
               lineHeight: 'normal',
             } }
           >
-            {`${currentRefQuantity} REF. ${currentPriceNumber}`}
+            {`${currentRefSave[id]} REF. ${currentPrice.toFixed(2)}`}
 
           </p>
         </div>
-        <ButtonAddProduct />
+        <ButtonAddProduct
+          addProduct={ addProduct }
+        />
         <div className="text-center">
           <h1
             style={ {
@@ -78,7 +88,7 @@ export default function AddProducts() {
               lineHeight: 'normal',
             } }
           >
-            {`${accumulatedRefQuantity} REF. ${accumulatedPrice.toFixed(2)}`}
+            {`${0} REF. ${0.00}`}
           </p>
         </div>
       </div>

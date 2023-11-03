@@ -1,25 +1,19 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { CategoryContext } from '../context/category-context';
-import { ProductContext } from '../context/product-context';
-import SizeCard from './SizeCard';
+import SizeCardClosed from './SizeCardClosed';
 
-export default function ProductSizes() {
+export default function ProductSizesClosedGrid() {
   const { actualProduct } = useContext(CategoryContext);
-  const { setCurrentPack } = useContext(ProductContext);
   const { sizes } = actualProduct;
+
   const sizesName = Object.keys(sizes);
   const sizesValues = Object.values(sizes);
   const totalPack = sizesValues.reduce((acc, cur) => cur.quantity + acc, 0);
 
-  useEffect(() => {
-    setCurrentPack(totalPack);
-    console.log(totalPack);
-  }, [totalPack]);
-
   return (
-    <div className="flex mx-[20px] justify-center my-[8px] items-end">
+    <div className="flex mx-[20px] justify-center items-end mt-[12px]">
       {sizesValues.map((size, i) => (
-        <SizeCard
+        <SizeCardClosed
           quantity={ size.quantity }
           size={ sizesName[i] }
           key={ `${size}-${i}` }
@@ -32,14 +26,13 @@ export default function ProductSizes() {
           fontSize: '44px',
           fontStyle: 'normal',
           fontWeight: '400',
-
         } }
       >
         =
       </span>
       <div className="flex flex-col ml-[8px] items-center">
         <div className="uppercase">Pack</div>
-        <SizeCard quantity={ totalPack } isPack />
+        <SizeCardClosed quantity={ totalPack } isPack />
       </div>
     </div>
   );

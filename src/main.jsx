@@ -6,11 +6,11 @@ import App from './pages/App';
 import './styles/index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <ProductContextProvider>
-      <CategoryContextProvider>
-        <App />
-      </CategoryContextProvider>
-    </ProductContextProvider>
-  </React.StrictMode>,
+
+  <ProductContextProvider>
+    <CategoryContextProvider>
+      <App />
+    </CategoryContextProvider>
+  </ProductContextProvider>,
+
 );

@@ -1,37 +1,14 @@
-import { useContext } from 'react';
 import minusIcon from '../../public/icons/minus-symbol.svg';
 import plusIcon from '../../public/icons/plus-symbol.svg';
-import { ProductContext } from '../context/product-context';
 
-export default function ButtonAddProduct() {
-  const {
-    currentRefQuantity,
-    setCurrentRefQuantity,
-    setAccumulatedRefQuantity,
-    setAccumulatedPrice,
-    currentPrice,
-    currentPack } = useContext(ProductContext);
-
-  const addProduct = () => {
-    setCurrentRefQuantity((prevState) => prevState + 1);
-    setAccumulatedRefQuantity((prevState) => prevState + currentPack);
-    const totalPrice = currentPrice * currentPack;
-    setAccumulatedPrice((prevState) => prevState + totalPrice);
-  };
-
-  const removeProduct = () => {
-    setCurrentRefQuantity((prevState) => prevState - 1);
-    setAccumulatedRefQuantity((prevState) => prevState - currentPack);
-  };
-
+export default function ButtonAddProduct(props) {
+  const { addProduct } = props;
   return (
     <div
       className="flex justify-between bg-[#12A1B8] rounded-[8px]
     px-[8px] py-[4px] items-center"
     >
-      <button
-        onClick={ removeProduct }
-      >
+      <button>
         <img src={ minusIcon } alt="Icone de menos" />
       </button>
       <h1
@@ -44,11 +21,9 @@ export default function ButtonAddProduct() {
           fontWeight: '500',
         } }
       >
-        {currentRefQuantity}
+        {}
       </h1>
-      <button
-        onClick={ addProduct }
-      >
+      <button onClick={ () => addProduct() }>
         <img
           src={ plusIcon }
           alt="Icone de mais"

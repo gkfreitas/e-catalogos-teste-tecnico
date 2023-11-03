@@ -10,6 +10,7 @@ export default function AllPhotosSlide() {
   const {
     setCategory,
     setActualProduct,
+    actualProduct,
     indexPhoto,
   } = useContext(CategoryContext);
 
@@ -17,6 +18,7 @@ export default function AllPhotosSlide() {
     toggleChosedImage,
     chosedImage,
     allPhotosVisible,
+    setOpenGrid,
   } = useContext(ProductContext);
 
   const slideToNextPhoto = () => {
@@ -29,7 +31,9 @@ export default function AllPhotosSlide() {
     setCategory(mockProducts[indexPhoto.current].categoryName);
     setActualProduct(mockProducts[indexPhoto.current]);
     const photoElement = document.getElementById(`photo-${indexPhoto.current}`);
-    photoElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    if (photoElement) {
+      photoElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
   };
 
   const slideToPreviusPhoto = () => {
@@ -41,20 +45,25 @@ export default function AllPhotosSlide() {
     setCategory(mockProducts[indexPhoto.current].categoryName);
     setActualProduct(mockProducts[indexPhoto.current]);
     const photoElement = document.getElementById(`photo-${indexPhoto.current}`);
-    photoElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    if (photoElement) {
+      photoElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
   };
 
   useEffect(() => {
     setCategory(mockProducts[indexPhoto.current].categoryName);
     setActualProduct(mockProducts[indexPhoto.current]);
+    setOpenGrid(actualProduct.openGrid);
     const photoElement = document.getElementById(`photo-${indexPhoto.current}`);
-    photoElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    if (photoElement) {
+      photoElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
   }, [indexPhoto.current]);
 
   return (
     <div className="relative">
       <div
-        className="flex flex-nowrap overflow-auto"
+        className="flex flex-nowrap overflow-hidden"
         style={ {
           boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)',
           borderRadius: '0px 0px 10px 10px',

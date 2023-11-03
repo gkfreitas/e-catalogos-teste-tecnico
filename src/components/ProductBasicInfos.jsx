@@ -1,15 +1,9 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { CategoryContext } from '../context/category-context';
-import { ProductContext } from '../context/product-context';
 
 export default function ProductBasicInfos() {
   const { actualProduct } = useContext(CategoryContext);
-  const { setCurrentPrice, currentPrice } = useContext(ProductContext);
   const { reference, price, nome: name } = actualProduct;
-
-  useEffect(() => {
-    setCurrentPrice(price);
-  }, [price]);
 
   function capitalizeFirstLetterOfEachSentence(inputString) {
     const sentences = inputString.split(' ');
@@ -23,7 +17,7 @@ export default function ProductBasicInfos() {
     return result;
   }
   return (
-    <section className="mt-[12px]">
+    <section className="mt-[4px]">
       <div className="mx-[20px] flex justify-between">
         <h1
           style={ {
@@ -70,7 +64,7 @@ export default function ProductBasicInfos() {
         </h1>
       </div>
       <div
-        className="text-center mt-[24px]"
+        className="text-center mt-[12px]"
         style={ {
           color: '#1E1E1E',
           fontFamily: 'Roboto',
