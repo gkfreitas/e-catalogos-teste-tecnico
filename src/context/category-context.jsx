@@ -1,19 +1,15 @@
-import { createContext, useContext, useEffect, useRef, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { mockProducts } from '../mock/produtosMOCK';
 import { ProductContext } from './product-context';
 
 export const CategoryContext = createContext({});
 
 export default function CategoryContextProvider({ children }) {
-  const initialCategory = mockProducts[0].categoryName;
-
-  const [category, setCategory] = useState(initialCategory);
+  const { toggleChosedImage, indexPhoto, setIndexPhoto } = useContext(ProductContext);
+  const [category, setCategory] = useState('');
   const [filteredProducts, setFiltedProducts] = useState([]);
 
-  const indexPhoto = useRef(0);
   const categories = [...new Set(mockProducts.map((product) => product.categoryName))];
-
-  const { toggleChosedImage } = useContext(ProductContext);
 
   useEffect(() => {
     const setFilter = (categoryName) => {
@@ -22,14 +18,18 @@ export default function CategoryContextProvider({ children }) {
       setFiltedProducts(filtered);
     };
     setFilter(category);
-  }, [category, indexPhoto.current]);
+  }, [category]);
+
+  useEffect(() => {
+    setCategory(mockProducts[indexPhoto].categoryName);
+  }, [indexPhoto]);
 
   const findFirstProductOfCategory = (categoryName) => {
     const foundedProduct = mockProducts
       .find((product) => product.categoryName === categoryName);
     const indexOfFirstProductOfCategory = mockProducts
       .indexOf(foundedProduct);
-    indexPhoto.current = indexOfFirstProductOfCategory;
+    setIndexPhoto(indexOfFirstProductOfCategory);
   };
 
   const backCategory = () => {
@@ -63,7 +63,6 @@ export default function CategoryContextProvider({ children }) {
   };
 
   return (
-
     <CategoryContext.Provider
       value={ {
         indexPhoto,

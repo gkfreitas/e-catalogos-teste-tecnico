@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { ProductContext } from '../../context/product-context';
 import * as S from './style';
 
@@ -8,28 +8,15 @@ export default function SizeCardOpen(props) {
   const {
     currentSize,
     setCurrentSize,
-    currentSizeSave,
-    setCurrentSizeSave,
     currentProduct,
+    productsCart,
   } = useContext(ProductContext);
 
   const { id } = currentProduct;
 
   const verifyUnic = size === 'unico';
 
-  const stockToReduce = currentSizeSave[id] ? currentSizeSave[id][size] : 0;
-
-  useEffect(() => {
-    if (!currentSizeSave[id]) {
-      setCurrentSizeSave((prevState) => ({
-        ...prevState,
-        [id]: {
-          ...prevState[id],
-          [size]: 0,
-        },
-      }));
-    }
-  }, []);
+  const stockReduce = productsCart[id] ? productsCart[id].sizes[size] || 0 : 0;
 
   return (
     <>
@@ -43,7 +30,7 @@ export default function SizeCardOpen(props) {
           } }
         >
           <S.QuantitySize>
-            {currentSizeSave[id] ? currentSizeSave[id][size] : 0 }
+            {productsCart[id] ? productsCart[id].sizes[size] || 0 : 0 }
           </S.QuantitySize>
           {verifyUnic ? '' : (
             <>
@@ -93,7 +80,7 @@ export default function SizeCardOpen(props) {
                     fill="#000"
                     fontSize={ 12 }
                   >
-                    {stock - stockToReduce }
+                    {stock - stockReduce }
                   </text>
                 </svg>
               </S.StockBall>

@@ -17,6 +17,7 @@ export default function ProductBasicInfos() {
     const result = capitalizedSentences.join(' ');
     return result;
   }
+
   return (
     <section>
       <S.ProductBasicInfosContainer>

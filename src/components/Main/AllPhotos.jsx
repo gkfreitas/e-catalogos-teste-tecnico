@@ -5,15 +5,15 @@ import { mockProducts } from '../../mock/produtosMOCK';
 import * as S from './styles';
 
 export default function AllPhotos() {
-  const { filteredProducts, indexPhoto } = useContext(CategoryContext);
-  const { setAllPhotosVisible } = useContext(ProductContext);
+  const { filteredProducts } = useContext(CategoryContext);
+  const { setAllPhotosVisible, setIndexPhoto } = useContext(ProductContext);
 
   const photos = filteredProducts.map((product) => product.images[0]);
 
   const findProductByPhoto = (photo) => {
     const foundedProduct = mockProducts.find((product) => product.images[0] === photo);
     const indexOfThisProduct = mockProducts.indexOf(foundedProduct);
-    indexPhoto.current = indexOfThisProduct;
+    setIndexPhoto(indexOfThisProduct);
     setAllPhotosVisible(false);
   };
 

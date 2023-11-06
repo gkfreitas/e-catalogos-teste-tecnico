@@ -1,15 +1,20 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { ProductContext } from '../../context/product-context';
 import SizeCardClosed from './SizeCardClosed';
 import * as S from './style';
 
 export default function ProductSizesClosedGrid() {
-  const { currentProduct } = useContext(ProductContext);
+  const { currentProduct, setCurrentPack } = useContext(ProductContext);
+
   const { sizes } = currentProduct;
 
   const sizesName = Object.keys(sizes);
   const sizesValues = Object.values(sizes);
   const totalPack = sizesValues.reduce((acc, cur) => cur.quantity + acc, 0);
+
+  useEffect(() => {
+    setCurrentPack(totalPack);
+  }, [totalPack, setCurrentPack]);
 
   return (
     <S.SizesContainer>

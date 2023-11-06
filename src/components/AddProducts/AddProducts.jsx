@@ -7,75 +7,160 @@ export default function AddProducts() {
   const {
     currentProduct,
     currentRefSave,
-    setCurrentRefSave,
     accumulatedPrice,
-    setAccumulatedPrice,
     accumulatedRef,
-    setAccumulatedRef,
-    setCurrentSizeSave,
-    currentSizeSave,
     currentSize,
+    productsCart,
+    setProductsCart,
     isOpenGrid,
+    setCurrentSize,
   } = useContext(ProductContext);
 
-  const { id, price } = currentProduct;
+  const { id, price, images, nome: name, sizes } = currentProduct;
   const [currentPrice, setCurrentPrice] = useState(0);
+  const [currentRef, setCurrentRef] = useState(0);
 
-  const addProduct = () => {
-    if (isOpenGrid) {
-      if (currentProduct.sizes[currentSize].stock <= currentSizeSave[id][currentSize]) {
-        return;
-      }
-      return setCurrentSizeSave((prevState) => ({
+  const sizesTransformed = (multiple = 1) => {
+    const sizesKeys = Object.keys(sizes);
+    const sizesValues = Object.values(sizes);
+    const sizesProduct = {};
+    sizesKeys.forEach((size, i) => {
+      console.log(size);
+      sizesProduct[size] = sizesValues[i].quantity * multiple;
+    });
+
+    return sizesProduct;
+  };
+
+  const addProductCartCloseGrid = () => {
+    if (!productsCart[id]) {
+      return setProductsCart((prevState) => ({
         ...prevState,
         [id]: {
-          ...prevState[id],
-          [currentSize]: prevState[id][currentSize] + 1,
+          image: images[0].url,
+          name,
+          price,
+          sizes: sizesTransformed(),
+          packs: 1,
         },
       }));
     }
-    setCurrentRefSave((prevState) => ({
-      ...prevState,
-      [id]: currentRefSave[id] + 1,
-    }));
 
-    const total = price * (currentRefSave[id] + 1);
-    setCurrentPrice(total);
-    setAccumulatedRef((prevState) => prevState + 1);
-    setAccumulatedPrice((prevState) => prevState + price);
+    setProductsCart((prevState) => ({
+      ...prevState,
+      [id]: {
+        ...prevState[id],
+        sizes: sizesTransformed(productsCart[id].packs + 1),
+        packs: productsCart[id].packs + 1,
+      },
+    }));
   };
 
-  const removeProduct = () => {
-    if (currentRefSave[id] === 0) return;
-    setCurrentRefSave((prevState) => ({
+  const removeProductCartCloseGrid = () => {
+    if (!productsCart[id]) return;
+
+    setProductsCart((prevState) => ({
       ...prevState,
-      [id]: currentRefSave[id] - 1,
+      [id]: {
+        ...prevState[id],
+        sizes: sizesTransformed(productsCart[id].packs - 1),
+        packs: productsCart[id].packs - 1,
+      },
     }));
-    const total = price * (currentRefSave[id] - 1);
-    setCurrentPrice(total);
-    setAccumulatedRef((prevState) => prevState - 1);
-    setAccumulatedPrice((prevState) => prevState - price);
-    if (isOpenGrid) {
-      setCurrentSizeSave((prevState) => ({
+  };
+
+  const addProductCartOpenGrid = () => {
+    // Valor incial
+    if (!currentSize) return;
+
+    if (!productsCart[id]) {
+      setProductsCart((prevState) => ({
+        ...prevState,
+        [id]: {
+          image: images[0].url,
+          name,
+          price,
+          sizes: {
+            [currentSize]: 1,
+          },
+          packs: 1,
+        },
+      }));
+    }
+
+    if (productsCart[id]) {
+      if (sizes[currentSize].stock === productsCart[id].sizes[currentSize]) return;
+
+      setProductsCart((prevState) => ({
         ...prevState,
         [id]: {
           ...prevState[id],
-          [currentSize]: prevState[id][currentSize] - 1,
+          sizes: {
+            ...prevState[id].sizes,
+            [currentSize]: prevState[id].sizes[currentSize] + 1 || 1,
+          },
         },
       }));
+    }
+  };
+
+  const removeProductCartOpenGrid = () => {
+    // Valor incial
+    if (!currentSize) return;
+
+    if (!productsCart[id]) return;
+
+    if (productsCart[id].sizes[currentSize] === 0) return;
+
+    setProductsCart((prevState) => ({
+      ...prevState,
+      [id]: {
+        ...prevState[id],
+        sizes: {
+          ...prevState[id].sizes,
+          [currentSize]: prevState[id].sizes[currentSize] - 1 || 0,
+        },
+      },
+    }));
+  };
+
+  const addProduct = () => {
+    if (isOpenGrid) {
+      addProductCartOpenGrid();
+    }
+    if (!isOpenGrid) {
+      addProductCartCloseGrid();
+    }
+  };
+
+  const removeProduct = () => {
+    if (!productsCart[id]) return;
+
+    if (currentRef === 0) return;
+
+    if (isOpenGrid) {
+      removeProductCartOpenGrid();
+    }
+
+    if (!isOpenGrid) {
+      removeProductCartCloseGrid();
     }
   };
 
   useEffect(() => {
-    setCurrentRefSave((prevState) => ({
-      ...prevState,
-      [id]: currentRefSave[id] || 0,
-    }));
+    setCurrentRef(0);
+    setCurrentPrice(0);
+    if (productsCart[id]) {
+      const sizesValues = Object.values(productsCart[id].sizes);
+      const calcCurrentRef = sizesValues.reduce((acc, cur) => cur + acc, 0);
+      setCurrentRef(calcCurrentRef);
+      setCurrentPrice(currentRef * price);
+    }
+  }, [productsCart, id, currentRef, price]);
 
-    const total = price * currentRefSave[id] || 0;
-
-    setCurrentPrice(total);
-  }, [id]);
+  useEffect(() => {
+    setCurrentSize('');
+  }, [setCurrentSize, id]);
 
   return (
     <S.AddProductsBox>
@@ -85,7 +170,7 @@ export default function AddProducts() {
             Atual
           </S.TextStyle>
           <S.TextStyle style={ { fontSize: '14px' } }>
-            {`${currentRefSave[id]} REF. ${currentPrice.toFixed(2)}`}
+            {`${currentRef} REF. ${currentPrice.toFixed(2)}`}
           </S.TextStyle>
         </div>
         <ButtonAddProduct
