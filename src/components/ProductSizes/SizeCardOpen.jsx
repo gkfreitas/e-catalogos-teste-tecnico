@@ -1,5 +1,6 @@
 import { useContext, useEffect } from 'react';
-import { ProductContext } from '../context/product-context';
+import { ProductContext } from '../../context/product-context';
+import * as S from './style';
 
 export default function SizeCardOpen(props) {
   const { size, stock } = props;
@@ -31,40 +32,23 @@ export default function SizeCardOpen(props) {
   }, []);
 
   return (
-    <div className="mr-[20px]">
+    <>
       {verifyUnic && <div>UNICO</div>}
       <button onClick={ () => setCurrentSize(size) }>
-        <div
-          className="px-[8px] border-[#055663] relative text-center }"
+        <S.CardContainer
           style={ {
-            border: '0.2px solid #055663',
-            borderRadius: '5px',
             backgroundColor: `${size === currentSize
-              ? '#7aedff' : '#BBF6FF'}`,
+              ? '#1CBFD8' : '#BBF6FF'}`,
+            marginRight: '20px',
           } }
         >
-          <h1
-            style={ {
-              color: '#000',
-              fontFamily: 'Roboto',
-              fontSize: '40px',
-              fontStyle: 'normal',
-              lineHeight: 'normal',
-              fontWeight: '500',
-            } }
-          >
+          <S.QuantitySize>
             {currentSizeSave[id] ? currentSizeSave[id][size] : 0 }
-          </h1>
+          </S.QuantitySize>
           {verifyUnic ? '' : (
             <>
-              <div className="absolute -top-2 -right-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                >
+              <S.SizeBall>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                   <circle
                     cx="10"
                     cy="10"
@@ -84,8 +68,8 @@ export default function SizeCardOpen(props) {
                     {size.toUpperCase()}
                   </text>
                 </svg>
-              </div>
-              <div className="absolute -top-2 -left-2">
+              </S.SizeBall>
+              <S.StockBall>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
@@ -112,11 +96,11 @@ export default function SizeCardOpen(props) {
                     {stock - stockToReduce }
                   </text>
                 </svg>
-              </div>
+              </S.StockBall>
             </>
           )}
-        </div>
+        </S.CardContainer>
       </button>
-    </div>
+    </>
   );
 }

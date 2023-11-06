@@ -1,6 +1,7 @@
 import { useContext } from 'react';
-import { ProductContext } from '../context/product-context';
+import { ProductContext } from '../../context/product-context';
 import SizeCardOpen from './SizeCardOpen';
+import * as S from './style';
 
 export default function ProductSizesOpenGrid() {
   const { currentProduct } = useContext(ProductContext);
@@ -10,7 +11,7 @@ export default function ProductSizesOpenGrid() {
   const sizesValues = Object.values(sizes);
 
   return (
-    <div className="flex mx-[20px] justify-center items-end mt-[28px]">
+    <S.SizesContainer>
 
       {sizesValues.map((size, i) => (
         <SizeCardOpen
@@ -20,6 +21,6 @@ export default function ProductSizesOpenGrid() {
           key={ `${size}-${i}` }
         />
       ))}
-    </div>
+    </S.SizesContainer>
   );
 }
