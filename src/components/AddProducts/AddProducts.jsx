@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
-import { ProductContext } from '../context/product-context';
+import { ProductContext } from '../../context/product-context';
 import ButtonAddProduct from './ButtonAddProduct';
+import * as S from './style';
 
 export default function AddProducts() {
   const {
@@ -25,7 +26,7 @@ export default function AddProducts() {
       if (currentProduct.sizes[currentSize].stock <= currentSizeSave[id][currentSize]) {
         return;
       }
-      setCurrentSizeSave((prevState) => ({
+      return setCurrentSizeSave((prevState) => ({
         ...prevState,
         [id]: {
           ...prevState[id],
@@ -37,6 +38,7 @@ export default function AddProducts() {
       ...prevState,
       [id]: currentRefSave[id] + 1,
     }));
+
     const total = price * (currentRefSave[id] + 1);
     setCurrentPrice(total);
     setAccumulatedRef((prevState) => prevState + 1);
@@ -76,63 +78,30 @@ export default function AddProducts() {
   }, [id]);
 
   return (
-    <section className="bg-[#1CBFD8] py-[5px] absolute w-[390px] bottom-0 left-0">
-      <div
-        className="mx-[20px] flex justify-between items-center
-      "
-      >
-        <div className="text-center">
-          <h1
-            style={ {
-              color: '#1E1E1E',
-              fontFamily: 'Roboto',
-              fontSize: '16px',
-              fontStyle: 'normal',
-              fontWeight: '500',
-            } }
-          >
+    <S.AddProductsBox>
+      <S.AddProcutsContainer>
+        <div>
+          <S.TextStyle>
             Atual
-          </h1>
-          <p
-            style={ {
-              color: '#000',
-              fontFamily: 'Roboto',
-              fontSize: '14px',
-              fontStyle: 'normal',
-              fontWeight: '500',
-              lineHeight: 'normal',
-            } }
-          >
+          </S.TextStyle>
+          <S.TextStyle style={ { fontSize: '14px' } }>
             {`${currentRefSave[id]} REF. ${currentPrice.toFixed(2)}`}
-          </p>
+          </S.TextStyle>
         </div>
-        <ButtonAddProduct addProduct={ addProduct } removeProduct={ removeProduct } />
-        <div className="text-center">
-          <h1
-            style={ {
-              color: '#1E1E1E',
-              fontFamily: 'Roboto',
-              fontSize: '16px',
-              fontStyle: 'normal',
-              fontWeight: '500',
-            } }
-          >
+        <ButtonAddProduct
+          addProduct={ addProduct }
+          removeProduct={ removeProduct }
+          quantity={ currentRefSave[id] }
+        />
+        <div>
+          <S.TextStyle>
             Acumulado
-          </h1>
-          <p
-            style={ {
-              color: '#000',
-              fontFamily: 'Roboto',
-              fontSize: '14px',
-              fontStyle: 'normal',
-              fontWeight: '500',
-              lineHeight: 'normal',
-            } }
-          >
+          </S.TextStyle>
+          <S.TextStyle style={ { fontSize: '14px' } }>
             {`${accumulatedRef} REF. ${accumulatedPrice.toFixed(2)}`}
-          </p>
+          </S.TextStyle>
         </div>
-      </div>
-    </section>
+      </S.AddProcutsContainer>
+    </S.AddProductsBox>
   );
 }

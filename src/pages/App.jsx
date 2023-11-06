@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import AddProducts from '../components/AddProductsClosedGrid';
+import AddProducts from '../components/AddProducts/AddProducts';
 import Header from '../components/Header/Header';
 import SlidePhotos from '../components/Main/SlidePhotos';
 import ProductBasicInfos from '../components/ProductBasicInfos/ProductBasicInfos';
