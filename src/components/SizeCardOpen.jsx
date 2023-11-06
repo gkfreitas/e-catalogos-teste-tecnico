@@ -53,7 +53,6 @@ export default function SizeCardOpen(props) {
               fontWeight: '500',
             } }
           >
-            {console.log(currentSizeSave[id])}
             {currentSizeSave[id] ? currentSizeSave[id][size] : 0 }
           </h1>
           {verifyUnic ? '' : (

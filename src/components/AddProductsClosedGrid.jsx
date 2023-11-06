@@ -14,7 +14,8 @@ export default function AddProducts() {
     setCurrentSizeSave,
     currentSizeSave,
     currentSize,
-    isOpenGrid } = useContext(ProductContext);
+    isOpenGrid,
+  } = useContext(ProductContext);
 
   const { id, price } = currentProduct;
   const [currentPrice, setCurrentPrice] = useState(0);
@@ -37,7 +38,7 @@ export default function AddProducts() {
       [id]: currentRefSave[id] + 1,
     }));
     const total = price * (currentRefSave[id] + 1);
-    setCurrentPrice((total));
+    setCurrentPrice(total);
     setAccumulatedRef((prevState) => prevState + 1);
     setAccumulatedPrice((prevState) => prevState + price);
   };
@@ -49,7 +50,7 @@ export default function AddProducts() {
       [id]: currentRefSave[id] - 1,
     }));
     const total = price * (currentRefSave[id] - 1);
-    setCurrentPrice((total));
+    setCurrentPrice(total);
     setAccumulatedRef((prevState) => prevState - 1);
     setAccumulatedPrice((prevState) => prevState - price);
     if (isOpenGrid) {
@@ -88,11 +89,9 @@ export default function AddProducts() {
               fontSize: '16px',
               fontStyle: 'normal',
               fontWeight: '500',
-
             } }
           >
             Atual
-
           </h1>
           <p
             style={ {
@@ -105,13 +104,9 @@ export default function AddProducts() {
             } }
           >
             {`${currentRefSave[id]} REF. ${currentPrice.toFixed(2)}`}
-
           </p>
         </div>
-        <ButtonAddProduct
-          addProduct={ addProduct }
-          removeProduct={ removeProduct }
-        />
+        <ButtonAddProduct addProduct={ addProduct } removeProduct={ removeProduct } />
         <div className="text-center">
           <h1
             style={ {
@@ -123,7 +118,6 @@ export default function AddProducts() {
             } }
           >
             Acumulado
-
           </h1>
           <p
             style={ {
