@@ -12,10 +12,10 @@ import './styles/index.css';
 
 const routerApp = createBrowserRouter([
   {
-    path: '/',
+    path: 'e-catalogos-teste-tecnico',
     element: <App />,
   }, {
-    path: 'order',
+    path: '/e-catalogos-teste-tecnico/order',
     element: <SummaryOrder />,
   },
 ]);
