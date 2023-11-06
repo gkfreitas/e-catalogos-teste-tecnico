@@ -26,6 +26,11 @@ export default function ProductContextProvider({ children }) {
     setOpenGrid(currentProduct.openGrid);
   }, [currentProduct, indexPhoto, productsCart]);
 
+  // Sempre que o produto atual mudar, salve-o no armazenamento local
+  useEffect(() => {
+    localStorage.setItem('productsCart', JSON.stringify(Object.values(productsCart)));
+  }, [productsCart]);
+
   useEffect(() => {
     const totalRef = () => {
       const productsCartIds = Object.keys(productsCart);
@@ -45,6 +50,7 @@ export default function ProductContextProvider({ children }) {
       setAccumulatedPrice(totalPrice);
     };
     totalRef();
+    console.log(productsCart, Object.values(productsCart));
   }, [productsCart]);
 
   return (

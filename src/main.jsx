@@ -24,7 +24,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <ProductContextProvider>
     <CategoryContextProvider>
       <RouterProvider router={ routerApp } />
-
     </CategoryContextProvider>
   </ProductContextProvider>,
 );

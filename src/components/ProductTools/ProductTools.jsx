@@ -58,10 +58,12 @@ export default function ProductTools() {
         alt="Icone de um olho"
         onClick={ () => setAllPhotosVisible(!allPhotosVisible) }
       />
-      <S.ToolImage
-        src={ shopIcon }
-        alt="Icone de um carrinho de compras"
-      />
+      <a href="/order">
+        <S.ToolImage
+          src={ shopIcon }
+          alt="Icone de um carrinho de compras"
+        />
+      </a>
 
       <InfoCard
         name={ nome }
