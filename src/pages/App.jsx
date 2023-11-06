@@ -1,13 +1,28 @@
-import Header from '../components/Header';
-import ProductTools from '../components/ProductTools';
-import SlidePhotos from '../components/SlidePhotos';
+import { useContext } from 'react';
+import AddProducts from '../components/AddProducts/AddProducts';
+import Header from '../components/Header/Header';
+import SlidePhotos from '../components/Main/SlidePhotos';
+import ProductBasicInfos from '../components/ProductBasicInfos/ProductBasicInfos';
+import ProductSizesClosedGrid from '../components/ProductSizes/ProductSizesClosedGrid';
+import ProductSizesOpenGrid from '../components/ProductSizes/ProductSizesOpenGrid';
+import ProductTools from '../components/ProductTools/ProductTools';
+import { ProductContext } from '../context/product-context';
+import * as S from './style';
 
 export default function App() {
+  const { isOpenGrid } = useContext(ProductContext);
+
   return (
-    <div className="max-w-[390px] max-h-[844px] mx-auto">
-      <Header />
-      <SlidePhotos />
-      <ProductTools />
-    </div>
+    <S.PageBody>
+      <S.MobileContainer>
+        <Header />
+        <SlidePhotos />
+        <ProductTools />
+        <ProductBasicInfos />
+        {isOpenGrid ? <ProductSizesOpenGrid /> : <ProductSizesClosedGrid />}
+        <AddProducts />
+      </S.MobileContainer>
+    </S.PageBody>
+
   );
 }

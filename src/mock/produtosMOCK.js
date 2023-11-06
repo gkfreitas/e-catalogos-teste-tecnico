@@ -1,12 +1,11 @@
+/* eslint-disable max-len */
 export const mockProducts = [
   {
     id: 1,
     reference: '11.10.2023',
     nome: 'óculos',
     price: 34.5,
-    description: (`'Nossos modelos de óculos são resistentes 
-    e modernos de categoria Premium, sempre focando na excelência, 
-    segurança, qualidade e o melhor custo benefício para o cliente.'`),
+    description: 'Nossos modelos de óculos são resistentes e modernos de categoria Premium, sempre focando na excelência, segurança, qualidade e o melhor custo benefício para o cliente.',
     tecInfo: 'Original, lente policarbonato com proteção contra raios solares UV 400',
     NCM: 0,
     deliveryTime: 'mensal',
@@ -17,80 +16,16 @@ export const mockProducts = [
     },
     openGrid: 0,
     images: [
-      { id: 34, url: 'https://plus.unsplash.com/premium_photo-1690481529194-6087914e096e?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
+      { id: 34, url: 'https://images.ray-ban.com/is/image/RayBan/805289304456__STD__shad__al2.png?impolicy=RB_Product&width=1024&bgc=%23f2f2f2' },
     ],
   },
   {
     id: 2,
-    reference: '11.10.2023',
-    nome: 'óculos',
-    price: 34.5,
-    description: (`'Nossos modelos de óculos são resistentes 
-    e modernos de categoria Premium, sempre focando na excelência, 
-    segurança, qualidade e o melhor custo benefício para o cliente.'`),
-    tecInfo: 'Original, lente policarbonato com proteção contra raios solares UV 400',
-    NCM: 0,
-    deliveryTime: 'mensal',
-    categoryName: 'oculos',
-    categoryId: 3,
-    sizes: {
-      unico: { quantity: 6, stock: 107 },
-    },
-    openGrid: 0,
-    images: [
-      { id: 34, url: 'https://images.ray-ban.com/is/image/RayBan/805289304456__STD__shad__al2.png?impolicy=RB_Product&width=1024&bgc=%23f2f2f2' },
-    ],
-  },
-  {
-    id: 3,
-    reference: '11.10.2023',
-    nome: 'óculos',
-    price: 34.5,
-    description: (`'Nossos modelos de óculos são resistentes 
-    e modernos de categoria Premium, sempre focando na excelência, 
-    segurança, qualidade e o melhor custo benefício para o cliente.'`),
-    tecInfo: 'Original, lente policarbonato com proteção contra raios solares UV 400',
-    NCM: 0,
-    deliveryTime: 'mensal',
-    categoryName: 'oculos',
-    categoryId: 3,
-    sizes: {
-      unico: { quantity: 6, stock: 107 },
-    },
-    openGrid: 0,
-    images: [
-      { id: 34, url: 'https://images.ray-ban.com/is/image/RayBan/805289304456__STD__shad__al2.png?impolicy=RB_Product&width=1024&bgc=%23f2f2f2' },
-    ],
-  },
-  {
-    id: 4,
-    reference: '11.10.2023',
-    nome: 'óculos',
-    price: 34.5,
-    description: (`'Nossos modelos de óculos são resistentes 
-    e modernos de categoria Premium, sempre focando na excelência, 
-    segurança, qualidade e o melhor custo benefício para o cliente.'`),
-    tecInfo: 'Original, lente policarbonato com proteção contra raios solares UV 400',
-    NCM: 0,
-    deliveryTime: 'mensal',
-    categoryName: 'oculos',
-    categoryId: 3,
-    sizes: {
-      unico: { quantity: 6, stock: 107 },
-    },
-    openGrid: 0,
-    images: [
-      { id: 34, url: 'https://images.ray-ban.com/is/image/RayBan/805289304456__STD__shad__al2.png?impolicy=RB_Product&width=1024&bgc=%23f2f2f2' },
-    ],
-  },
-  {
-    id: 5,
     reference: '12.45.2023',
     nome: 'ocúlos de sol preto',
     price: 50.24,
     description: 'Melhor custo benefício para o cliente.',
-    tecInfo: (`'Original, óculos de sol redondos, 
-    lente policarbonato com proteção contra raios solares UV 500'`),
+    tecInfo: 'Original, óculos de sol redondos, lente policarbonato com proteção contra raios solares UV 500',
     NCM: 0,
     deliveryTime: 'mensal',
     categoryName: 'oculos',
@@ -105,7 +40,7 @@ export const mockProducts = [
     ],
   },
   {
-    id: 6,
+    id: 3,
     reference: '08.45.2001',
     nome: 'Casaco infantil',
     price: 199.98,
@@ -128,7 +63,7 @@ export const mockProducts = [
     ],
   },
   {
-    id: 7,
+    id: 4,
     reference: '16.10.2020',
     nome: 'Conjunto casaco infantil',
     price: 250.3,
@@ -150,7 +85,7 @@ export const mockProducts = [
     ],
   },
   {
-    id: 8,
+    id: 5,
     reference: '16.10.2020',
     nome: 'Conjunto casaco infantil',
     price: 250.3,
@@ -169,6 +104,47 @@ export const mockProducts = [
     openGrid: 1,
     images: [
       { id: 89, url: 'https://paineladm.e-catalogos.net/storage/2110/2110_1573128500sm752p2ku7b4y6xep309x4.png' },
+    ],
+  },
+  {
+    id: 6,
+    reference: '17.10.2020',
+    nome: 'Oculos preto',
+    price: 250.3,
+    description: 'Oculos preto.',
+    tecInfo: '',
+    NCM: 0,
+    deliveryTime: 'pronta entrega',
+    categoryName: 'oculos',
+    categoryId: 3,
+    sizes: {
+      P: { quantity: 2, stock: 40 },
+      M: { quantity: 3, stock: 40 },
+      G: { quantity: 3, stock: 40 },
+      GG: { quantity: 2, stock: 35 },
+    },
+    openGrid: 0,
+    images: [
+      { id: 89, url: 'https://paineladm.e-catalogos.net/storage/2110/2110_1651667483ezf5lxhvf5glbe6iam16vo.png' },
+    ],
+  },
+  {
+    id: 7,
+    reference: '17.10.2020',
+    nome: 'Oculos vermelho',
+    price: 250.3,
+    description: 'Oculos preto.',
+    tecInfo: '',
+    NCM: 0,
+    deliveryTime: 'pronta entrega',
+    categoryName: 'oculos',
+    categoryId: 3,
+    sizes: {
+      unico: { quantity: 2, stock: 40 },
+    },
+    openGrid: 0,
+    images: [
+      { id: 89, url: 'https://paineladm.e-catalogos.net/storage/2110/2110_16516674933c1dnbldyu5mdfmuyacql.png' },
     ],
   },
 ];

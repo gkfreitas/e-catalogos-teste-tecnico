@@ -1,16 +1,29 @@
-import React from 'react';
+import {
+  RouterProvider,
+  createBrowserRouter,
+} from 'react-router-dom';
+
 import ReactDOM from 'react-dom/client';
 import CategoryContextProvider from './context/category-context';
 import ProductContextProvider from './context/product-context';
 import App from './pages/App';
+import SummaryOrder from './pages/SummaryOrder';
 import './styles/index.css';
 
+const routerApp = createBrowserRouter([
+  {
+    path: '/',
+    element: <App />,
+  }, {
+    path: 'order',
+    element: <SummaryOrder />,
+  },
+]);
+
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  <ProductContextProvider>
     <CategoryContextProvider>
-      <ProductContextProvider>
-        <App />
-      </ProductContextProvider>
+      <RouterProvider router={ routerApp } />
     </CategoryContextProvider>
-  </React.StrictMode>,
+  </ProductContextProvider>,
 );
