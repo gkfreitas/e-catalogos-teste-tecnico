@@ -1,7 +1,8 @@
 import { useContext } from 'react';
-import arrowLeft from '../../public/icons/back.svg';
-import arrowRight from '../../public/icons/icon-arrow-back-ios.svg';
-import { CategoryContext } from '../context/category-context';
+import arrowLeft from '../../../public/icons/back.svg';
+import arrowRight from '../../../public/icons/icon-arrow-back-ios.svg';
+import { CategoryContext } from '../../context/category-context';
+import * as S from './styles';
 
 export default function Header() {
   const { category,
@@ -14,17 +15,14 @@ export default function Header() {
 
   return (
 
-    <header
-      className="flex h-[46px] items-center
-    bg-[#1CBFD8] px-[20px] rounded-b-[5px] justify-between"
-    >
-      <div className="flex items-center">
-        <img
+    <S.HeaderContainer>
+      <S.LeftSection className="flex items-center">
+        <S.ArrowIcon
           src={ arrowLeft }
           alt="Flecha para esquerda"
           className="w-[30px] h-[30px]"
         />
-        <h1
+        <S.CategoryName
           className="uppercase ml-[24px]"
           style={ {
             color: '#001A1E',
@@ -35,17 +33,17 @@ export default function Header() {
         >
           {`${category} (${quantity})`}
 
-        </h1>
-      </div>
-      <div className="flex items-center">
-        <img
+        </S.CategoryName>
+      </S.LeftSection>
+      <S.RightSection className="flex items-center">
+        <S.ArrowIcon
           role="presentation"
           src={ arrowLeft }
           onClick={ backCategory }
           alt="Flecha para esquerda"
           className="w-[30px] h-[30px]"
         />
-        <div
+        <S.CategoryButton
           className="mx-[4px] p-[5px] uppercase bg-[#12A1B8] rounded-[5px]"
           style={ {
             color: '#001A1E',
@@ -55,15 +53,15 @@ export default function Header() {
           } }
         >
           Categoria
-        </div>
-        <img
+        </S.CategoryButton>
+        <S.ArrowIcon
           role="presentation"
           src={ arrowRight }
           alt="Flecha para Direitas"
           className="w-[30px] h-[30px]"
           onClick={ nextCategory }
         />
-      </div>
-    </header>
+      </S.RightSection>
+    </S.HeaderContainer>
   );
 }
