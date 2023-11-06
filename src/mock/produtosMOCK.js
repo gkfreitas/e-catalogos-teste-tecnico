@@ -101,7 +101,7 @@ export const mockProducts = [
       G: { quantity: 3, stock: 40 },
       GG: { quantity: 2, stock: 35 },
     },
-    openGrid: 1,
+    openGrid: 0,
     images: [
       { id: 89, url: 'https://paineladm.e-catalogos.net/storage/2110/2110_1651667483ezf5lxhvf5glbe6iam16vo.png' },
     ],
@@ -120,7 +120,7 @@ export const mockProducts = [
     sizes: {
       unico: { quantity: 2, stock: 40 },
     },
-    openGrid: 1,
+    openGrid: 0,
     images: [
       { id: 89, url: 'https://paineladm.e-catalogos.net/storage/2110/2110_16516674933c1dnbldyu5mdfmuyacql.png' },
     ],
