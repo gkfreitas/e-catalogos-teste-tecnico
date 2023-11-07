@@ -9,9 +9,13 @@ export default function CategoryContextProvider({ children }) {
   const [category, setCategory] = useState('');
   const [filteredProducts, setFiltedProducts] = useState([]);
 
+  // Pega todas os nomes de categorias da base de dados e tira as repetições
+
   const categories = [...new Set(mockProducts.map((product) => product.categoryName))];
 
   useEffect(() => {
+    // Toda vez que a categoria mudar é feito um filtro para a categoria escolhidas
+
     const setFilter = (categoryName) => {
       const filtered = mockProducts
         .filter((product) => product.categoryName === categoryName);
@@ -21,8 +25,12 @@ export default function CategoryContextProvider({ children }) {
   }, [category]);
 
   useEffect(() => {
+    // Toda vez que o index da foto mudar a categoria é setada de acordo com o produto
+
     setCategory(mockProducts[indexPhoto].categoryName);
   }, [indexPhoto]);
+
+  // Producura o primeiro produto referente a categoria
 
   const findFirstProductOfCategory = (categoryName) => {
     const foundedProduct = mockProducts
@@ -31,6 +39,8 @@ export default function CategoryContextProvider({ children }) {
       .indexOf(foundedProduct);
     setIndexPhoto(indexOfFirstProductOfCategory);
   };
+
+  // Função para voltar categoria
 
   const backCategory = () => {
     toggleChosedImage(false);
@@ -46,6 +56,8 @@ export default function CategoryContextProvider({ children }) {
     setCategory(newCategory);
     findFirstProductOfCategory(newCategory);
   };
+
+  // Função para ir para a proxima categoria
 
   const nextCategory = () => {
     toggleChosedImage(false);

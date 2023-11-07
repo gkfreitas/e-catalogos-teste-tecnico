@@ -19,6 +19,8 @@ export default function ProductTools() {
 
   const { images, nome, description, tecInfo, deliveryTime } = currentProduct;
 
+  // Ao clicar no produto muda a src do produto
+
   const enableAndShowImage = ({ target }) => {
     toggleChosedImage(true);
     setProductImageUrl(target.src);

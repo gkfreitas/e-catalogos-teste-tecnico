@@ -22,11 +22,18 @@ export default function ProductContextProvider({ children }) {
   const [productsCart, setProductsCart] = useState({});
 
   useEffect(() => {
+    // Sempre que o index da foto mudar o produto atual é setado
+
     setCurrentProduct(mockProducts[indexPhoto]);
+
+    // Seta o produto é openGrid ou não 0 - false 1 - true
     setOpenGrid(currentProduct.openGrid);
   }, [currentProduct, indexPhoto, productsCart]);
 
   useEffect(() => {
+    // Calcula todas as refs acumuladas e preço, e é atualizada a cada vez que
+    // um produto é adicionado ou removido do carrinho
+
     const totalRef = () => {
       const productsCartIds = Object.keys(productsCart);
       const products = productsCartIds.map((id) => {
@@ -45,7 +52,7 @@ export default function ProductContextProvider({ children }) {
       setAccumulatedPrice(totalPrice);
     };
     totalRef();
-
+    // Seta esses produtos no localStorage
     localStorage.setItem('productsCart', JSON.stringify(Object.values(productsCart)));
   }, [productsCart]);
 

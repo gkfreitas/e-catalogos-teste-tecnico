@@ -6,9 +6,15 @@ import * as S from './style';
 export default function InfoCard(props) {
   const { toggleInfoCard, visibleInfoCard } = useContext(ProductContext);
   const { name, description, tecInfo, deliveryTime } = props;
+  // Tags para info dos produtos
+
   const productInfos = ['Nome do produto', 'Descrição',
     'Informações Técnicas', 'Prazo de entrega'];
+
+  // Conteudo das informações do produto
+
   const productInfosContent = [name, description, tecInfo, deliveryTime];
+
   return (
     <>
       <S.InfoCardContainer
