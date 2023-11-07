@@ -1,7 +1,7 @@
 # Orientações
 	
 <details>
-<summary><strong>‼ Antes de começar a desenvolver</strong></summary><br />
+<summary><strong>Instruções para rodar o projeto</strong></summary><br />
 
 1. Clone o repositório
 
