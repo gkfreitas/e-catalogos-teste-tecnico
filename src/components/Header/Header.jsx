@@ -1,7 +1,6 @@
 import { useContext } from 'react';
+import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
 import { CategoryContext } from '../../context/category-context';
-import arrowLeft from '../../icons/back.svg';
-import arrowRight from '../../icons/icon-arrow-back-ios.svg';
 import * as S from './styles';
 
 export default function Header() {
@@ -19,28 +18,26 @@ export default function Header() {
 
     <S.HeaderContainer>
       <S.LeftSection>
-        <S.ArrowIcon
-          src={ arrowLeft }
-          alt="Flecha para esquerda"
+        <AiOutlineLeft
+          cursor="pointer"
+          size={ 24 }
         />
         <S.CategoryName>
           {`${category} (${quantity})`}
         </S.CategoryName>
       </S.LeftSection>
       <S.RightSection>
-        <S.ArrowIcon
-          role="presentation"
-          src={ arrowLeft }
+        <AiOutlineLeft
+          cursor="pointer"
+          size={ 26 }
           onClick={ backCategory }
-          alt="Flecha para esquerda"
         />
         <S.CategoryButton>
           Categoria
         </S.CategoryButton>
-        <S.ArrowIcon
-          role="presentation"
-          src={ arrowRight }
-          alt="Flecha para Direitas"
+        <AiOutlineRight
+          cursor="pointer"
+          size={ 26 }
           onClick={ nextCategory }
         />
       </S.RightSection>

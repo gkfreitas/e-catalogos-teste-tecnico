@@ -1,5 +1,4 @@
-import minusIcon from '../../icons/minus-symbol.svg';
-import plusIcon from '../../icons/plus-symbol.svg';
+import { AiFillMinusCircle, AiFillPlusCircle } from 'react-icons/ai';
 import * as S from './style';
 
 export default function ButtonAddProduct(props) {
@@ -7,13 +6,19 @@ export default function ButtonAddProduct(props) {
   return (
     <S.ButtonBox>
       <button onClick={ removeProduct }>
-        <img src={ minusIcon } alt="Icone de menos" />
+        <AiFillMinusCircle
+          size={ 35 }
+          fill="#0B7788"
+        />
       </button>
       <S.ProductQuantityText>
         {quantity}
       </S.ProductQuantityText>
       <button onClick={ () => addProduct() }>
-        <img src={ plusIcon } alt="Icone de mais" />
+        <AiFillPlusCircle
+          size={ 35 }
+          fill="#BBF6FF"
+        />
       </button>
     </S.ButtonBox>
   );

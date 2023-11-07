@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react';
+import { BsFillArrowLeftCircleFill, BsFillArrowRightCircleFill } from 'react-icons/bs';
 import { ProductContext } from '../../context/product-context';
-import arrow from '../../icons/right-arrow.svg';
 import { mockProducts } from '../../mock/produtosMOCK';
 import RenderAllPhotos from './RenderAllPhotos';
 import * as S from './styles';
@@ -86,17 +86,27 @@ export default function AllPhotosSlide() {
           <RenderAllPhotos />
         )}
 
-        <S.ArrowLeft
-          role="presentation"
+        <BsFillArrowLeftCircleFill
+          size={ 32 }
+          cursor="pointer"
+          fill="#055663"
           onClick={ slideToPreviusPhoto }
-          src={ arrow }
-          alt="Flecha para esquerda"
+          style={ {
+            position: 'absolute',
+            bottom: '20px',
+            left: '20px',
+          } }
         />
-        <S.ArrowRight
-          role="presentation"
+        <BsFillArrowRightCircleFill
+          size={ 32 }
+          cursor="pointer"
+          fill="#055663"
           onClick={ slideToNextPhoto }
-          src={ arrow }
-          alt="Flecha para direita"
+          style={ {
+            position: 'absolute',
+            bottom: '20px',
+            right: '20px',
+          } }
         />
       </S.SlideContainer>
     </S.RelativeArrows>

@@ -5,14 +5,13 @@ import styled from 'styled-components';
 export const ToolsContainer = styled.section`
   display: flex;
   justify-content: space-between;
-  justify-items: center;
+  align-items: center;
   padding: 12px 20px 12px 20px;
   border-bottom: 2px solid #001A1E;
 `;
 
 export const ToolImage = styled.img`
   cursor: pointer;
-
 `;
 
 export const ImageContainer = styled.div`
