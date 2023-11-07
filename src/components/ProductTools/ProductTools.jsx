@@ -1,9 +1,9 @@
 import { useContext } from 'react';
-import infoIcon from '../../../public/icons/info.svg';
-import searchIcon from '../../../public/icons/search-icon.svg';
-import shopIcon from '../../../public/icons/shop-icon.svg';
-import viewIcon from '../../../public/icons/view-icon.svg';
 import { ProductContext } from '../../context/product-context';
+import infoIcon from '../../icons/info.svg';
+import searchIcon from '../../icons/search-icon.svg';
+import shopIcon from '../../icons/shop-icon.svg';
+import viewIcon from '../../icons/view-icon.svg';
 import InfoCard from './InfoCard';
 import * as S from './style';
 

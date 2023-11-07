@@ -1,4 +1,4 @@
-import arrowLeft from '../../../public/icons/back.svg';
+import arrowLeft from '../../icons/back.svg';
 import * as S from './style';
 
 export default function HeaderSummaryOrder() {

@@ -1,7 +1,7 @@
 import { useContext } from 'react';
-import arrowLeft from '../../../public/icons/back.svg';
-import arrowRight from '../../../public/icons/icon-arrow-back-ios.svg';
 import { CategoryContext } from '../../context/category-context';
+import arrowLeft from '../../icons/back.svg';
+import arrowRight from '../../icons/icon-arrow-back-ios.svg';
 import * as S from './styles';
 
 export default function Header() {
