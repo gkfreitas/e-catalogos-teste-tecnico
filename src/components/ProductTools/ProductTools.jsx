@@ -58,7 +58,7 @@ export default function ProductTools() {
         alt="Icone de um olho"
         onClick={ () => setAllPhotosVisible(!allPhotosVisible) }
       />
-      <a href="/e-catalogos-teste-tecnico/order">
+      <a href="/order">
         <S.ToolImage
           src={ shopIcon }
           alt="Icone de um carrinho de compras"
