@@ -7,11 +7,16 @@ export const ToolsContainer = styled.section`
   justify-content: space-between;
   justify-items: center;
   padding: 12px 20px 12px 20px;
-  border-bottom: 1px solid black;
+  border-bottom: 2px solid #001A1E;
 `;
 
 export const ToolImage = styled.img`
   cursor: pointer;
+  &:hover {
+    border-radius: 99999999999px;
+    background-color: transparent;
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0, 0.2);
+  }
 `;
 
 export const ImageContainer = styled.div`
@@ -37,7 +42,7 @@ export const InfoCardContainer = styled.section`
   background-color: white;
   border-radius: 10px;
   z-index: 10;
-  transition-duration: 200ms;
+  transition-duration: 400ms;
 `;
 
 export const InfoCardHeader = styled.header`

@@ -7,8 +7,9 @@ export const PhotosContainer = styled.main`
   height: 490px;
   overflow: hidden;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  border-radius: 0px 0px 10px 10px;
+  border-radius: 10px 10px 10px 10px;
   margin: auto;
+  margin-top: 4px;
   overflow: auto;
 `;
 

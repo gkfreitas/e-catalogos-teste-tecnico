@@ -19,8 +19,8 @@ export default function InfoCard(props) {
     <>
       <S.InfoCardContainer
         style={ {
-          width: visibleInfoCard ? '370px' : '0px',
           height: visibleInfoCard ? '600px' : '0px',
+          top: visibleInfoCard ? '100px' : '0px',
         } }
       >
         <S.InfoCardHeader
