@@ -1,11 +1,14 @@
 import * as S from './style';
 
 export default function OrderBasicInfos() {
+  // Simulação de escolhas antes de ir para o pedido
+
   const mockOrderLeft = ['Razão social', 'CNPJ', 'N° Pedido',
     'Data Pedido', 'Transportadora', 'Cond. Pagamento', 'Data Entrega (mensal)'];
 
   const mockOrderRight = ['Murilo e Sarah Alimentos ME', '02.822.854/0001-89',
     '02.822.854/0001-89', '06/11/2023'];
+
   return (
     <S.OrderContainer>
       {
