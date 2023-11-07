@@ -21,6 +21,8 @@ export default function AddProducts() {
   const [currentRef, setCurrentRef] = useState(0);
 
   const sizesTransformed = (multiple = 1) => {
+    // Transforma dos dados de current Product para se adequar aos dados de productsCart
+
     const sizesKeys = Object.keys(sizes);
     const sizesValues = Object.values(sizes);
     const sizesProduct = {};
@@ -32,6 +34,10 @@ export default function AddProducts() {
   };
 
   const addProductCartCloseGrid = () => {
+    // Adiciona Products ao carrinho se for grade fechada
+
+    // Se o produto não estiver no carrinho ele é criado pela primeira vez
+
     if (!productsCart[id]) {
       return setProductsCart((prevState) => ({
         ...prevState,
@@ -45,6 +51,8 @@ export default function AddProducts() {
       }));
     }
 
+    // Adiciona os packs e multiplica as quantidades
+
     setProductsCart((prevState) => ({
       ...prevState,
       [id]: {
@@ -56,7 +64,11 @@ export default function AddProducts() {
   };
 
   const removeProductCartCloseGrid = () => {
+    // Se o produto não existir no carrinho é impossivel tira-lo
+
     if (!productsCart[id]) return;
+
+    // Remove 1 pack do produto do carrinho
 
     setProductsCart((prevState) => ({
       ...prevState,
@@ -69,8 +81,11 @@ export default function AddProducts() {
   };
 
   const addProductCartOpenGrid = () => {
-    // Valor incial
+    // Se nenhum tamanho estiver seleciona não é possivel adicionar o produto
+
     if (!currentSize) return;
+
+    // Se o produto não estiver no carrinho ele é criado pela primeira vez
 
     if (!productsCart[id]) {
       setProductsCart((prevState) => ({
@@ -87,7 +102,11 @@ export default function AddProducts() {
       }));
     }
 
+    // Se o produto existir é possivel adicionar de 1 em 1
+
     if (productsCart[id]) {
+      // Se o estoque = a quantidade selecionada não é possivel adicionar mais
+
       if (sizes[currentSize].stock === productsCart[id].sizes[currentSize]) return;
 
       setProductsCart((prevState) => ({
@@ -104,12 +123,19 @@ export default function AddProducts() {
   };
 
   const removeProductCartOpenGrid = () => {
-    // Valor incial
+    // Se nenhum tamanho estiver seleciona não é possivel remover o produto
+
     if (!currentSize) return;
+
+    // Se o produto não existir não é possivel remover
 
     if (!productsCart[id]) return;
 
+    // Se eu a quantidade do tamanho for 0 não é possivel remover
+
     if (productsCart[id].sizes[currentSize] === 0) return;
+
+    // Remove o produto do carrinho de 1 a 1
 
     setProductsCart((prevState) => ({
       ...prevState,
@@ -124,6 +150,8 @@ export default function AddProducts() {
   };
 
   const addProduct = () => {
+    // Redireciona para as funções certa caso seja ou não grade aberta
+
     if (isOpenGrid) {
       addProductCartOpenGrid();
     }
@@ -133,9 +161,11 @@ export default function AddProducts() {
   };
 
   const removeProduct = () => {
-    if (!productsCart[id]) return;
+    // Se a quantidade atual do produto for 0 não é possivel remover
 
     if (currentRef === 0) return;
+
+    // Redireciona para as funções certa caso seja ou não grade aberta
 
     if (isOpenGrid) {
       removeProductCartOpenGrid();
@@ -147,8 +177,7 @@ export default function AddProducts() {
   };
 
   useEffect(() => {
-    setCurrentRef(0);
-    setCurrentPrice(0);
+    // Se o produto existir procura seus dados e seta
     if (productsCart[id]) {
       const sizesValues = Object.values(productsCart[id].sizes);
       const calcCurrentRef = sizesValues.reduce((acc, cur) => cur + acc, 0);
@@ -158,6 +187,13 @@ export default function AddProducts() {
   }, [productsCart, id, currentRef, price]);
 
   useEffect(() => {
+    // Ao mudar de produto seta o o preço e quantidade atual em 0
+
+    setCurrentRef(0);
+    setCurrentPrice(0);
+
+    // Ao mudar de produto reseta o tamanho selecionado
+
     setCurrentSize('');
   }, [setCurrentSize, id]);
 
