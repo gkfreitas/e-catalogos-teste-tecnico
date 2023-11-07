@@ -7,6 +7,7 @@ export default function ProductSizesOpenGrid() {
   const { currentProduct } = useContext(ProductContext);
   const { sizes } = currentProduct;
 
+  // Pega cada tamanho do produto e suas quantidades
   const sizesName = Object.keys(sizes);
   const sizesValues = Object.values(sizes);
 

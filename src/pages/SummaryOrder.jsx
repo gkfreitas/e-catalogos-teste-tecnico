@@ -5,10 +5,12 @@ import * as S from './style';
 
 export default function SummaryOrder() {
   return (
-    <S.PageContainer>
-      <HeaderSummaryOrder />
-      <OrderBasicInfos />
-      <ProductOrder />
-    </S.PageContainer>
+    <S.PageBody>
+      <S.PageContainer>
+        <HeaderSummaryOrder />
+        <OrderBasicInfos />
+        <ProductOrder />
+      </S.PageContainer>
+    </S.PageBody>
   );
 }

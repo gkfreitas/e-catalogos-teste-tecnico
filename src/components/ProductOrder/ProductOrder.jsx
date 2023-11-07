@@ -1,11 +1,14 @@
 import * as S from './style';
 
 export default function ProductOrder() {
+  // Tags usadas para detalhes do peido
+
   const tags = ['Foto', 'Ref / Nome', 'Tam.', 'Qtd', 'R$ Bruto',
     'R$ Imp.', 'R$ Total'];
 
+  // Pega do localStorage os produtos colocados no carrinho ou retorna um array vazio
+
   const productsData = JSON.parse(localStorage.getItem(('productsCart'))) || [];
-  console.log(productsData);
 
   return (
     <S.ProductOrderContainer>

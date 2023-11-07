@@ -11,6 +11,8 @@ export default function Header() {
     nextCategory,
   } = useContext(CategoryContext);
 
+  // Pega a quantidade de protudos do catalogo selecionado
+
   const quantity = filteredProducts.length;
 
   return (

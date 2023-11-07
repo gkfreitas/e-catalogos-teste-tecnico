@@ -21,6 +21,6 @@ export const MobileContainer = styled.div`
 
 export const PageContainer = styled.div`
   background: #12A1B8;
-  height: 100vh;
-  width: 100vw;
+  width: 390px;
+  height: 844px;
 `;

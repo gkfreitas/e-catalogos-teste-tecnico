@@ -19,6 +19,8 @@ export default function ProductTools() {
 
   const { images, nome, description, tecInfo, deliveryTime } = currentProduct;
 
+  // Ao clicar no produto muda a src do produto
+
   const enableAndShowImage = ({ target }) => {
     toggleChosedImage(true);
     setProductImageUrl(target.src);
@@ -58,7 +60,7 @@ export default function ProductTools() {
         alt="Icone de um olho"
         onClick={ () => setAllPhotosVisible(!allPhotosVisible) }
       />
-      <a href="/e-catalogos-teste-tecnico/order">
+      <a href="/order">
         <S.ToolImage
           src={ shopIcon }
           alt="Icone de um carrinho de compras"

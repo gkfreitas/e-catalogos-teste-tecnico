@@ -14,7 +14,11 @@ export default function SizeCardOpen(props) {
 
   const { id } = currentProduct;
 
+  // Verifica se o tamanho é unico se for o estilo é diferente
+
   const verifyUnic = size === 'unico';
+
+  // Pega a quantidade adicionada e é usado para reduzir a quantidade do estoque
 
   const stockReduce = productsCart[id] ? productsCart[id].sizes[size] || 0 : 0;
 

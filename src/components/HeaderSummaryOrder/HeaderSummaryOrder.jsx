@@ -4,7 +4,9 @@ import * as S from './style';
 export default function HeaderSummaryOrder() {
   return (
     <S.HeaderContainer>
-      <S.ArrowIcon src={ arrowLeft } alt="Flecha para esquerda" />
+      <a href="/">
+        <S.ArrowIcon src={ arrowLeft } alt="Flecha para esquerda" />
+      </a>
       <S.HeaderTitle>
         Pedido
       </S.HeaderTitle>

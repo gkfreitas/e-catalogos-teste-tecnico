@@ -16,14 +16,25 @@ export default function AllPhotosSlide() {
   } = useContext(ProductContext);
 
   const slideToNextPhoto = () => {
+    // Ao mudar de foto sai da foto escolhida
+
     toggleChosedImage(false);
+
+    // Muda o index da foto para o proximo da lista
+
     setIndexPhoto((prevState) => prevState + 1);
+
+    // Se for a ultima foto volta para a primeira
 
     if (indexPhoto === mockProducts.length - 1) {
       setIndexPhoto(0);
     }
 
+    // Elemento da foto escolhida
+
     const photoElement = document.getElementById(`photo-${indexPhoto}`);
+
+    // Se o elemento existir o scroll é feito para este elemento
 
     if (photoElement) {
       photoElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -31,22 +42,36 @@ export default function AllPhotosSlide() {
   };
 
   const slideToPreviusPhoto = () => {
+    // Ao mudar de foto sai da foto escolhida
+
     toggleChosedImage(false);
+
+    // Muda o index da foto para o item anterior da lista
+
     setIndexPhoto((prevState) => prevState - 1);
 
+    // Se for a primeira foto volta para a ultima
+
     if (indexPhoto === 0) {
-      console.log(mockProducts.length);
       setIndexPhoto(mockProducts.length - 1);
     }
 
+    // Elemento da foto escolhida
+
     const photoElement = document.getElementById(`photo-${indexPhoto}`);
+
+    // Se o elemento existir o scroll é feito para este elemento
+
     if (photoElement) {
       photoElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   };
 
   useEffect(() => {
+    // Sempre que o index mudar é feito o scroll independente se clicou ou não
+
     const photoElement = document.getElementById(`photo-${indexPhoto}`);
+
     if (photoElement) {
       photoElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }

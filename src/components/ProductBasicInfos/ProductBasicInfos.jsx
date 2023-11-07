@@ -6,15 +6,25 @@ export default function ProductBasicInfos() {
   const { currentProduct } = useContext(ProductContext);
   const { reference, price, nome: name } = currentProduct;
 
-  function capitalizeFirstLetterOfEachSentence(inputString) {
-    const sentences = inputString.split(' ');
-    const capitalizedSentences = sentences.map((sentence) => {
-      if (sentence.length > 0) {
-        return sentence.charAt(0).toUpperCase() + sentence.slice(1);
+  // Função para transformas as primeiras letras de cada palavra em maiuscula
+
+  function capitalizeFirstLetterOfEachWord(inputString) {
+    // Separa cada palavra e coloca em um array
+
+    const words = inputString.split(' ');
+
+    // Deixa em maisuculo a primeira letra da palavra
+
+    const capitalizedWords = words.map((word) => {
+      if (word.length > 0) {
+        return word.charAt(0).toUpperCase() + word.slice(1);
       }
-      return sentence;
+      return word;
     });
-    const result = capitalizedSentences.join(' ');
+
+    // Retorna a frase completa
+
+    const result = capitalizedWords.join(' ');
     return result;
   }
 
@@ -44,7 +54,7 @@ export default function ProductBasicInfos() {
         </S.PriceText>
       </S.ProductBasicInfosContainer>
       <S.ProductNameContainer>
-        {capitalizeFirstLetterOfEachSentence(name)}
+        {capitalizeFirstLetterOfEachWord(name)}
       </S.ProductNameContainer>
     </section>
   );

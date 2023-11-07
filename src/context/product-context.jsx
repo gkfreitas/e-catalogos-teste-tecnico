@@ -13,8 +13,6 @@ export default function ProductContextProvider({ children }) {
   const [allPhotosVisible, setAllPhotosVisible] = useState(false);
   const [isOpenGrid, setOpenGrid] = useState(0);
   const [currentSize, setCurrentSize] = useState('');
-  const [currentRefSave, setCurrentRefSave] = useState({});
-  const [currentSizeSave, setCurrentSizeSave] = useState({});
   const [accumulatedRef, setAccumulatedRef] = useState(0);
   const [accumulatedPrice, setAccumulatedPrice] = useState(0);
   const [currentPack, setCurrentPack] = useState(1);
@@ -22,16 +20,18 @@ export default function ProductContextProvider({ children }) {
   const [productsCart, setProductsCart] = useState({});
 
   useEffect(() => {
+    // Sempre que o index da foto mudar o produto atual é setado
+
     setCurrentProduct(mockProducts[indexPhoto]);
+
+    // Seta o produto é openGrid ou não 0 - false 1 - true
     setOpenGrid(currentProduct.openGrid);
   }, [currentProduct, indexPhoto, productsCart]);
 
-  // Sempre que o produto atual mudar, salve-o no armazenamento local
   useEffect(() => {
-    localStorage.setItem('productsCart', JSON.stringify(Object.values(productsCart)));
-  }, [productsCart]);
+    // Calcula todas as refs acumuladas e preço, e é atualizada a cada vez que
+    // um produto é adicionado ou removido do carrinho
 
-  useEffect(() => {
     const totalRef = () => {
       const productsCartIds = Object.keys(productsCart);
       const products = productsCartIds.map((id) => {
@@ -50,7 +50,8 @@ export default function ProductContextProvider({ children }) {
       setAccumulatedPrice(totalPrice);
     };
     totalRef();
-    console.log(productsCart, Object.values(productsCart));
+    // Seta esses produtos no localStorage
+    localStorage.setItem('productsCart', JSON.stringify(Object.values(productsCart)));
   }, [productsCart]);
 
   return (
@@ -68,14 +69,10 @@ export default function ProductContextProvider({ children }) {
         setOpenGrid,
         currentSize,
         setCurrentSize,
-        currentRefSave,
-        setCurrentRefSave,
         accumulatedPrice,
         setAccumulatedPrice,
         accumulatedRef,
         setAccumulatedRef,
-        currentSizeSave,
-        setCurrentSizeSave,
         currentProduct,
         setCurrentProduct,
         currentPack,

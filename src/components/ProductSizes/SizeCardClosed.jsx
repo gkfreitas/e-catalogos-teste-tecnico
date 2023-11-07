@@ -3,6 +3,8 @@ import * as S from './style';
 export default function SizeCard(props) {
   const { quantity, size, isPack } = props;
 
+  // Verifica se o tamanho é unico se for o estilo é diferente
+
   const verifyUnic = size === 'unico';
 
   return (

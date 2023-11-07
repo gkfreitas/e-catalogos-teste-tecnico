@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 export const SizesContainer = styled.section`
   display: flex;
-  margin: 18px 20px 0px 20px;
   justify-content: center;
   align-items: end;
 `;
