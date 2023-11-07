@@ -8,12 +8,19 @@ export default function AllPhotos() {
   const { filteredProducts } = useContext(CategoryContext);
   const { setAllPhotosVisible, setIndexPhoto } = useContext(ProductContext);
 
+  // Pega a primeira foto das fotos de cada produto para ser mostrada ao clicar para ver tudo
+
   const photos = filteredProducts.map((product) => product.images[0]);
 
   const findProductByPhoto = (photo) => {
+    // Procura o index da foto para redirecionar ao clicar
+
     const foundedProduct = mockProducts.find((product) => product.images[0] === photo);
     const indexOfThisProduct = mockProducts.indexOf(foundedProduct);
     setIndexPhoto(indexOfThisProduct);
+
+    // Sai do ver tudo
+
     setAllPhotosVisible(false);
   };
 
