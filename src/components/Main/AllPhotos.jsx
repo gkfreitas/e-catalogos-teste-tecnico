@@ -8,7 +8,7 @@ export default function AllPhotos() {
   const { filteredProducts } = useContext(CategoryContext);
   const { setAllPhotosVisible, setIndexPhoto } = useContext(ProductContext);
 
-  // Pega a primeira foto das fotos de cada produto para ser mostrada ao clicar para ver tudo
+  // Pega a primeira foto das fotos de cada produto da categoria para ser mostrada ao clicar para ver tudo
 
   const photos = filteredProducts.map((product) => product.images[0]);
 
