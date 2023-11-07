@@ -8,11 +8,18 @@ export default function ProductSizesClosedGrid() {
 
   const { sizes } = currentProduct;
 
+  // Pega cada tamanho do produto e suas quantidades
+
   const sizesName = Object.keys(sizes);
   const sizesValues = Object.values(sizes);
+
+  // Calcula o a quantidade de produtos por pack
+
   const totalPack = sizesValues.reduce((acc, cur) => cur.quantity + acc, 0);
 
   useEffect(() => {
+    // Quando a quantidade mudar seta a nova quantidade
+
     setCurrentPack(totalPack);
   }, [totalPack, setCurrentPack]);
 
