@@ -1,9 +1,9 @@
 import { useContext } from 'react';
+import {
+  AiFillInfoCircle, AiOutlineEye, AiOutlineSearch,
+  AiOutlineShoppingCart
+} from 'react-icons/ai';
 import { ProductContext } from '../../context/product-context';
-import infoIcon from '../../icons/info.svg';
-import searchIcon from '../../icons/search-icon.svg';
-import shopIcon from '../../icons/shop-icon.svg';
-import viewIcon from '../../icons/view-icon.svg';
 import InfoCard from './InfoCard';
 import * as S from './style';
 
@@ -30,16 +30,18 @@ export default function ProductTools() {
     <S.ToolsContainer
       className="py-[12px] border-b border-black"
     >
-      {!allPhotosVisible && <S.ToolImage
-        role="presentation"
-        src={ infoIcon }
-        onClick={ () => toggleInfoCard(true) }
-        alt="Icone para informações"
-      />}
+      {!allPhotosVisible
+          && <AiFillInfoCircle
+            size={ 32 }
+            cursor="pointer"
+            fill="#055663"
+            onClick={ () => toggleInfoCard(true) }
+          />}
 
-      <S.ToolImage
-        src={ searchIcon }
-        alt="Icone de pesquisa"
+      <AiOutlineSearch
+        size={ 32 }
+        cursor="pointer"
+        fill="#055663"
       />
       {!allPhotosVisible && images.map((image, i) => (
         <S.ImageContainer
@@ -54,16 +56,17 @@ export default function ProductTools() {
         </S.ImageContainer>
       ))}
 
-      <S.ToolImage
-        role="presentation"
-        src={ viewIcon }
-        alt="Icone de um olho"
+      <AiOutlineEye
+        size={ 32 }
+        cursor="pointer"
+        fill="#055663"
         onClick={ () => setAllPhotosVisible(!allPhotosVisible) }
       />
       <a href="/order">
-        <S.ToolImage
-          src={ shopIcon }
-          alt="Icone de um carrinho de compras"
+        <AiOutlineShoppingCart
+          size={ 32 }
+          cursor="pointer"
+          fill="#055663"
         />
       </a>
 
