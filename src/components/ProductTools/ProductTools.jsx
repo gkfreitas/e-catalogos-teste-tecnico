@@ -1,7 +1,9 @@
 import { useContext } from 'react';
 import {
-  AiFillInfoCircle, AiOutlineEye, AiOutlineSearch,
-  AiOutlineShoppingCart
+  AiFillInfoCircle,
+  AiOutlineEye,
+  AiOutlineSearch,
+  AiOutlineShoppingCart,
 } from 'react-icons/ai';
 import { ProductContext } from '../../context/product-context';
 import InfoCard from './InfoCard';
