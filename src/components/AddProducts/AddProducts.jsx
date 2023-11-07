@@ -25,7 +25,6 @@ export default function AddProducts() {
     const sizesValues = Object.values(sizes);
     const sizesProduct = {};
     sizesKeys.forEach((size, i) => {
-      console.log(size);
       sizesProduct[size] = sizesValues[i].quantity * multiple;
     });
 

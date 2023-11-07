@@ -50,7 +50,6 @@ export default function ProductContextProvider({ children }) {
       setAccumulatedPrice(totalPrice);
     };
     totalRef();
-    console.log(productsCart, Object.values(productsCart));
   }, [productsCart]);
 
   return (

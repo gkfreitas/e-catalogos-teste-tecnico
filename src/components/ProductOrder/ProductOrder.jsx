@@ -5,7 +5,6 @@ export default function ProductOrder() {
     'R$ Imp.', 'R$ Total'];
 
   const productsData = JSON.parse(localStorage.getItem(('productsCart'))) || [];
-  console.log(productsData);
 
   return (
     <S.ProductOrderContainer>

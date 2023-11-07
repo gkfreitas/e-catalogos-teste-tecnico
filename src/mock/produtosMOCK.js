@@ -63,28 +63,6 @@ export const mockProducts = [
     ],
   },
   {
-    id: 4,
-    reference: '16.10.2020',
-    nome: 'Conjunto casaco infantil',
-    price: 250.3,
-    description: 'Conjunto infantil, inverno ROSA, Blusa e chapéu.',
-    tecInfo: '',
-    NCM: 0,
-    deliveryTime: 'pronta entrega',
-    categoryName: 'infantil',
-    categoryId: 11,
-    sizes: {
-      P: { quantity: 2, stock: 40 },
-      M: { quantity: 3, stock: 40 },
-      G: { quantity: 3, stock: 40 },
-      GG: { quantity: 2, stock: 35 },
-    },
-    openGrid: 1,
-    images: [
-      { id: 89, url: 'https://paineladm.e-catalogos.net/storage/2110/2110_1573128500sm752p2ku7b4y6xep309x4.png' },
-    ],
-  },
-  {
     id: 5,
     reference: '16.10.2020',
     nome: 'Conjunto casaco infantil',
@@ -106,47 +84,7 @@ export const mockProducts = [
       { id: 89, url: 'https://paineladm.e-catalogos.net/storage/2110/2110_1573128500sm752p2ku7b4y6xep309x4.png' },
     ],
   },
-  {
-    id: 6,
-    reference: '17.10.2020',
-    nome: 'Oculos preto',
-    price: 250.3,
-    description: 'Oculos preto.',
-    tecInfo: '',
-    NCM: 0,
-    deliveryTime: 'pronta entrega',
-    categoryName: 'oculos',
-    categoryId: 3,
-    sizes: {
-      P: { quantity: 2, stock: 40 },
-      M: { quantity: 3, stock: 40 },
-      G: { quantity: 3, stock: 40 },
-      GG: { quantity: 2, stock: 35 },
-    },
-    openGrid: 0,
-    images: [
-      { id: 89, url: 'https://paineladm.e-catalogos.net/storage/2110/2110_1651667483ezf5lxhvf5glbe6iam16vo.png' },
-    ],
-  },
-  {
-    id: 7,
-    reference: '17.10.2020',
-    nome: 'Oculos vermelho',
-    price: 250.3,
-    description: 'Oculos preto.',
-    tecInfo: '',
-    NCM: 0,
-    deliveryTime: 'pronta entrega',
-    categoryName: 'oculos',
-    categoryId: 3,
-    sizes: {
-      unico: { quantity: 2, stock: 40 },
-    },
-    openGrid: 0,
-    images: [
-      { id: 89, url: 'https://paineladm.e-catalogos.net/storage/2110/2110_16516674933c1dnbldyu5mdfmuyacql.png' },
-    ],
-  },
+
 ];
 
 // openGrid -> Fala se um produto tem grade aberta ou fechada. Valor 1 significa true, logo, é grade aberta. 0 é false, logo, grade fechada.

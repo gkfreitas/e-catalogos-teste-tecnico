@@ -35,7 +35,6 @@ export default function AllPhotosSlide() {
     setIndexPhoto((prevState) => prevState - 1);
 
     if (indexPhoto === 0) {
-      console.log(mockProducts.length);
       setIndexPhoto(mockProducts.length - 1);
     }
 
