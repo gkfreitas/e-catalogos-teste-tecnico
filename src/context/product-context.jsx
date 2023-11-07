@@ -13,8 +13,6 @@ export default function ProductContextProvider({ children }) {
   const [allPhotosVisible, setAllPhotosVisible] = useState(false);
   const [isOpenGrid, setOpenGrid] = useState(0);
   const [currentSize, setCurrentSize] = useState('');
-  const [currentRefSave, setCurrentRefSave] = useState({});
-  const [currentSizeSave, setCurrentSizeSave] = useState({});
   const [accumulatedRef, setAccumulatedRef] = useState(0);
   const [accumulatedPrice, setAccumulatedPrice] = useState(0);
   const [currentPack, setCurrentPack] = useState(1);
@@ -71,14 +69,10 @@ export default function ProductContextProvider({ children }) {
         setOpenGrid,
         currentSize,
         setCurrentSize,
-        currentRefSave,
-        setCurrentRefSave,
         accumulatedPrice,
         setAccumulatedPrice,
         accumulatedRef,
         setAccumulatedRef,
-        currentSizeSave,
-        setCurrentSizeSave,
         currentProduct,
         setCurrentProduct,
         currentPack,

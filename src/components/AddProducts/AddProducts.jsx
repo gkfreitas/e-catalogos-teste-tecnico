@@ -6,7 +6,6 @@ import * as S from './style';
 export default function AddProducts() {
   const {
     currentProduct,
-    currentRefSave,
     accumulatedPrice,
     accumulatedRef,
     currentSize,
@@ -211,7 +210,7 @@ export default function AddProducts() {
         <ButtonAddProduct
           addProduct={ addProduct }
           removeProduct={ removeProduct }
-          quantity={ currentRefSave[id] }
+          quantity={ currentRef }
         />
         <div>
           <S.TextStyle>
