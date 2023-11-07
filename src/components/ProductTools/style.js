@@ -12,11 +12,7 @@ export const ToolsContainer = styled.section`
 
 export const ToolImage = styled.img`
   cursor: pointer;
-  &:hover {
-    border-radius: 99999999999px;
-    background-color: transparent;
-    box-shadow: 0px 10px 15px -3px rgba(0,0,0, 0.2);
-  }
+
 `;
 
 export const ImageContainer = styled.div`

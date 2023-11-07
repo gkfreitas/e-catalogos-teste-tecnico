@@ -1,6 +1,6 @@
 import { useContext } from 'react';
-import closeIcon from '../../../public/icons/close-icon.svg';
 import { ProductContext } from '../../context/product-context';
+import closeIcon from '../../icons/close-icon.svg';
 import * as S from './style';
 
 export default function InfoCard(props) {

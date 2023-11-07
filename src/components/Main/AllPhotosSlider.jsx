@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react';
-import arrow from '../../../public/icons/right-arrow.svg';
 import { ProductContext } from '../../context/product-context';
+import arrow from '../../icons/right-arrow.svg';
 import { mockProducts } from '../../mock/produtosMOCK';
 import RenderAllPhotos from './RenderAllPhotos';
 import * as S from './styles';

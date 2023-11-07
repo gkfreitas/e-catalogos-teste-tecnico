@@ -1,5 +1,5 @@
-import minusIcon from '../../../public/icons/minus-symbol.svg';
-import plusIcon from '../../../public/icons/plus-symbol.svg';
+import minusIcon from '../../icons/minus-symbol.svg';
+import plusIcon from '../../icons/plus-symbol.svg';
 import * as S from './style';
 
 export default function ButtonAddProduct(props) {
